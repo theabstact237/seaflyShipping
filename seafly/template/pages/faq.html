@@ -1,0 +1,195 @@
+{% extends 'pages/base.html' %}
+{% load static%}
+{% load i18n %}
+
+{% trans 'FAQ – Foire aux questions' as foire %}
+{% block title %}{% trans "FAQ &#8211; Foire aux questions" %} | {% trans "Sea Fly Services Transitaire Français basé en Thaïlande" %} {% endblock %}
+{% block css %}
+<style>
+    :root{
+        --text: #565656;
+    }
+    #faq{
+        visibility: hidden;
+    }
+    .topImg{
+        visibility: hidden;
+        width: 100%;
+        height: 16rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("{% static 'pages/img/seashipment.jpg' %}");
+    }
+
+    .contact{
+        width: 100%;
+        display: flex;
+        color: #d91a31!important;
+        font-size: 1.7rem;
+        margin-top: 18px;
+    }
+
+    .description{
+        font-size: 0.9em;
+        display: block;
+        width: 100%;
+        float: left;
+        padding: 0.5em 0 0 0;
+    }
+    .content{
+        display: grid;
+        grid-template-columns: 5fr 2fr;
+        margin-top: 15px;
+    }
+    @media screen and (max-width: 864px) {
+        .content{
+            grid-template-columns: 1fr;
+        }
+        .buttons .button--contact{
+            display: flex;
+            flex-direction: row;
+        }
+        .buttons .button--contact button{
+            margin: 10px 0 10px;
+        }
+        .desc{
+            text-align: center;
+        }
+    }
+    .left{
+        margin-right: 15px;
+    }
+    .title{
+        font-size: 1.6em;
+        margin: 0.67em 0;
+        color: #ed120b;
+        font-weight: bold;
+    }
+    .description{
+        color: var(--text);
+        font-size: 0.85rem;
+        padding: 0 0 2em;
+        margin: 0 0 1em;
+        line-height: 1.2em;
+    }
+    .number{
+        font-size: 1.8rem;
+    }
+    .desc{
+        color: var(--text);
+        font-size: 0.8rem;
+        margin: 5px;
+    }
+    .buttons .button--contact{
+        display: flex;
+        flex-direction: column;
+    }
+    .buttons .button--contact button{
+        margin: 10px 0 10px;
+    }
+
+    .faq--question-item{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .faq--question-item a{
+        display: block;
+        border: red;
+        text-decoration: none;
+    }
+    .faq--question-item a:hover{
+        text-decoration: underline;
+    }
+    .faq--question-more{
+        font-size: 0.87rem;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="topImg">
+
+    </div>
+    <div id="faq" class="content">
+        <div class="left">
+            <div class="title">
+                {{ foire }}
+            </div>
+            <v-app>
+                <div class="description">
+                    <div class="faq--question-item mb-7" v-for="(question, key) in links" :key="key">
+                        <h3 style="font-weight: normal" class="mb-1"><a :href="'faq/' + question.link" class="faq--question">[[question.name]]</a></h3>
+                        <a :href="'faq/' + question.link" class="faq--question-more">{% trans "Plus d'information" %} ></a>
+                    </div>
+                </div>
+            </v-app>
+        </div>
+        <div class="right">
+                <div class="contact">
+                    <div style="width: auto; margin: auto">
+                        <div class="number ml-3"><v-icon color="black" style="font-size: 1.8rem;">phone</v-icon>089-666-6575</div>
+                    </div>
+                </div>
+                <div class="desc">
+                    <p>{% trans "Notre experience de 20 ans a votre disposition pour votre envoi." %}</p>
+                </div>
+                <div class="buttons">
+                    <button-red-green/>
+                </div>
+            </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+
+    <script src="{% static 'pages/js/component/red-button.js' %}"></script>
+    <script src="{% static 'pages/js/component/green-button.js' %}"></script>
+    <script src="{% static 'pages/js/component/button-red-green.js' %}"></script>
+<script>
+    let view = 'faq';
+    new Vue({
+        delimiters: ['[[', ']]'],
+        vuetify: vuetify,
+        el: '#' + view,
+        mounted () {
+            document.getElementById(view).style.visibility = 'visible';
+            document.getElementsByClassName("topImg")[0].style.visibility = 'visible';
+        },
+        data:() => ({
+            links: [
+                {
+                    name: "{% trans 'Que contient notre offre Porte à Porte ?' %}",
+                    link: 'que-contient-notre-offre-porte-a-porte'
+                },
+                {
+                    name: "{% trans 'Quelle solution est la plus économique pour mon envoi ?' %}",
+                    link: 'quelle-solution-est-la-plus-economique-pour-mon-envoi'
+                },
+                {
+                    name: "{% trans 'Quelles sont les dimensions et volumes des conteneurs ?' %}",
+                    link: 'quelles-sont-les-dimensions-et-volumes-des-conteneurs'
+                },
+                {
+                    name: "{% trans 'Comment calculez le volume de mon envoi ?' %}",
+                    link: 'comment-calculez-le-volume-de-mon-envoi'
+                },
+                {
+                    name: "{% trans 'Par aérien, quelle est la différence entre poids réel et poids taxable ?' %}",
+                    link: 'comment-connaitre-le-poids-de-mon-envoi'
+                },
+                {
+                    name: "{% trans 'Qu&apos;est ce qu&apos;un transitaire ?' %}",
+                    link: 'quest-ce-quun-transitaire'
+                },
+                {
+                    name: "{% trans 'Mon envoi nécessite-t-il un emballage spécial pour le transport de marchandises?' %}",
+                    link: 'mon-envoi-necessite-t-il-un-emballage-special-pour-le-transport-de-marchandises'
+                },
+            ]
+        })
+    });
+</script>
+{% endblock %}

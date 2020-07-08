@@ -1,0 +1,203 @@
+{% extends 'pages/base.html' %}
+{% load static%}
+{% load i18n %}
+{% block title %} {% trans 'Contactez Nous' %} | {% trans "Sea Fly Services Transitaire Français basé en Thaïlande" %} {% endblock %}
+{% block css %}
+<style>
+    :root{
+        --text: #565656;
+    }
+    .topImg{
+        visibility: hidden;
+        width: 100%;
+        height: 16rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("{% static 'pages/img/seashipment.jpg' %}");
+    }
+    .my-map{
+        width: 80%;
+        height: 310px;
+        background-color: #cccccc;
+        margin-top: 15px;
+    }
+    #contact{
+        visibility: hidden;
+    }
+
+    .contact--title{
+        font-size: 1.6em;
+        margin: 0.67em 0;
+        color: #ed120b;
+        font-weight: bold;
+    }
+    .contact--sub--title{
+        font-size: 1em;
+        margin: 0.4em 0;
+        color: #ed120b;
+        font-weight: bold;
+    }
+    .contact--para{
+        font-size: 0.85rem;
+    }
+    .contact{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .contact .left{
+        width: 65%;
+    }
+    .contact .right{
+        width: 35%;
+    }
+
+    @media screen and (max-width: 700px){
+
+        .template--content{
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+        .contact .left{
+            width: 100%;
+        }
+        .contact .right{
+            width: 100%;
+        }
+
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="topImg">
+
+    </div>
+<div id="contact">
+    <v-app>
+        <div class="contact">
+            <div class="left">
+                <div class="contact--title">
+                    <h3>{{ contactUs}}</h3>
+                </div>
+                <div class="contact--content" v-for="(item, key) in contacts" :key="key">
+                    <div class="contact--sub--title">[[ item.title ]]</div>
+                    <div class="contact--para" v-for="(subitem, subkey) in item.content" :key="subkey">
+                        [[ subitem ]]
+                    </div>
+                    <div class="link" v-if="key === 0"> {% trans 'Lien Google Maps :' %} <a href="/">Sea Fly Services Co., Ltd.</a> </div>
+                </div>
+                <green-button-code></green-button-code>
+                <div class="my-map mt-3" id="map">
+
+                </div>
+            </div>
+            <div class="right pr-3">
+                <div style="width: 100%;
+                            margin: 35px 10px;
+                            box-shadow: 0px 3px 10px -2px rgba(64, 61, 61, 0.6);
+                            padding: 10px;">
+                    {% if success %}
+                    <v-alert type="success">
+                      {{success}}
+                    </v-alert>
+                    {% endif %}
+                    <form action="contact" method="post">{% csrf_token %}
+                        <h2 class="form--contact--title" style="margin-top: 10px; margin-bottom: 15px;">{{ contactUs }}</h2>
+                        <v-text-field
+                                solo
+                                label="{% trans 'Nom' %}"
+                                prepend-inner-icon="person"
+                                name="name"
+                                {% if errors.name %} error-messages="{{errors.name.0}}" {% endif %}
+                                {% if post.name %} value="{{ post.name }}" {% endif %}
+                        ></v-text-field>
+                        <v-text-field
+                                solo
+                                label="{% trans 'Email' %}"
+                                prepend-inner-icon="email"
+                                name="email"
+                                {% if errors.email %} error-messages="{{errors.email.0}}" {% endif %}
+                                {% if post.email %} value="{{ post.email }}" {% endif %}
+                        ></v-text-field>
+                        <v-text-field
+                                solo
+                                label="{% trans 'Téléphone' %}"
+                                prepend-inner-icon="phone"
+                                name="phone"
+                                {% if errors.phone %} error-messages="{{errors.phone.0}}" {% endif %}
+                                {% if post.phone %} value="{{ post.phone }}" {% endif %}
+                        ></v-text-field>
+                        <v-text-field
+                                solo
+                                label="{% trans 'Société' %}"
+                                prepend-inner-icon="folder"
+                                name="company"
+                                {% if errors.company %} error-messages="{{errors.company.0}}" {% endif %}
+                                {% if post.company %} value="{{ post.company }}" {% endif %}
+                        ></v-text-field>
+                        <v-textarea
+                                outlined
+                                name="message"
+                                label="{% trans 'Votre message' %}"
+                                {% if errors.message %} error-messages="{{errors.message.0}}" {% endif %}
+                                {% if post.message %} value="{{ post.message }}" {% endif %}
+                        ></v-textarea>
+                        <v-btn class="mb-5" color="blue" type="submit" dark large>{% trans 'Envoyer' %}</v-btn>
+                </form>
+                </div>
+            </div>
+        </div>
+    </v-app>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+    let view = 'contact';
+    new Vue({
+        delimiters: ['[[', ']]'],
+        vuetify: vuetify,
+        el: '#contact',
+        mounted () {
+            document.getElementById('contact').style.visibility = 'visible';
+            document.getElementsByClassName("topImg")[0].style.visibility = 'visible';
+            this.contact_spliter();
+        },
+        data: () => ({
+            contacts: [
+                {
+                    title: '{% trans "Sea Fly Services Co., Ltd." %}',
+                    content: '{% trans "93/1 Soi Pracharat Bamphen 6 (Soi Suntornsiri)" %}\n' +
+                        '{% trans "Huaikwang, Bangkok" %}\n' +
+                        '{% trans "Thailand 10310" %}\n' +
+                        'Tel: +66(0) 26903523 - 7'
+                },
+                {
+                    title: '{% trans "Département commercial" %}\n',
+                    content: '{% trans "Tel: 66(0) 26903523 - 7" %}\n' +
+                        'Email: sales@seafly-services.com\n'
+                },
+                {
+                    title: '{% trans "Heures d&apos;ouvertures" %}',
+                    content: '{% trans "Du Lundi au Vendredi" %}\n' +
+                        '{% trans "09:00 - 17:30" %}'
+                },
+            ],
+        }),
+        methods: {
+            contact_spliter () {
+                for (let i = 0; i < this.contacts.length; i++) {
+                    this.contacts[i].content = this.contacts[i].content.split('\n')
+                }
+            }
+        },
+    });
+</script>
+<script src="{% static 'pages/js/vendor.js' %}"></script>
+<script src="{% static 'pages/js/app.js' %}"></script>
+{% endblock %}

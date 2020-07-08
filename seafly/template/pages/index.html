@@ -1,0 +1,210 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %} {% trans 'Sea Fly Services Transitaire Français basé en Thaïlande | Nos 20 ans d’expérience rendent vos expeditions plus sures et plus sécurisées.' %} {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'pages/css/index.css' %}">
+    <style>
+        .img-1{
+            grid-area: img-1;
+            background-image: url("{% static 'pages/img/seashipment.jpg' %}");
+        }
+        .img-2{
+            grid-area: img-2;
+            background-image: url("{% static 'pages/img/airshipment.jpg' %}");
+        }
+        .img-3{
+            grid-area: img-3;
+            background-image: url("{% static 'pages/img/doortodoor.jpg' %}");
+        }
+        .img-4{
+            grid-area: img-4;
+            background-image: url("{% static 'pages/img/removal.jpg' %}");
+        }
+        .img-11{
+            grid-area: img-11;
+            background-image: url("{% static 'pages/img/customs.jpg' %}");
+        }
+        .img-12{
+            grid-area: img-12;
+            background-image: url("{% static 'pages/img/crossborder.jpg' %}");
+        }
+        .img-13{
+            grid-area: img-13;
+            background-image: url("{% static 'pages/img/france.jpg' %}");
+        }
+        .img-14{
+            grid-area: img-14;
+            background-image: url("{% static 'pages/img/domtom.jpg' %}");
+        }
+        .img-15{
+            grid-area: img-15;
+            background-image: url("{% static 'pages/img/china.jpg' %}");
+        }
+        .img-16{
+            grid-area: img-16;
+            background-image: url("{% static 'pages/img/international.jpg' %}");
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <span id="gallery">
+        <span class="gallery">
+                <v-app>
+                    <div class="image--gallery mt-1">
+                        <div class="img img--left" v-for="item1 in gallery.left" :key="item1.name" :class="'img-' + item1.position">
+                            <div class="title ml-1 mt-1">[[ item1.name ]]</div>
+                            <div class="img--hover">
+                                <div class="title ml-1 mt-1">[[ item1.name ]]</div>
+                                <div class="description-item ml-2 mt-1" v-html="item1.description"></div>
+                                <v-btn outlined color="white" class="ml-3 mt-1" x-small :href="item1.route" v-html="table[1].bottomTitle"></v-btn>
+                            </div>
+                        </div>
+                        <div class="img img--right" v-for="item2 in gallery.right" :key="item2.name" :class="'img-1' + item2.position">
+                            <div class="hover--head">
+                                <div class="ml-1 subtitle" v-if="item2.is_expd">{% trans "Expedition" %}</div>
+                                <div class="title ml-1">[[ item2.name ]]</div>
+                            </div>
+                            <div class="img--hover">
+                                <div class="description-item ml-3 mt-3">[[ item2.description ]]</div>
+                                <v-btn outlined color="white" class="ml-3 mt-1" x-small :href="item2.route">[[ table[1].bottomTitle]]</v-btn>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="table--col mt-4">
+                        <div class="item" v-for="(item2, key) in table" :key="key">
+                            <h3 class="title">[[ item2.name ]]</h3>
+                            <div class="content" :class="{separed: item2.img !== false}">
+                                <div :class="{left: item2.img !== false}">
+                                    [[ item2.text ]]
+                                </div>
+                                <div class="right" v-if="item2.img !== false">
+                                    <img src="../../assets/img/homepromotion.jpg" alt="">
+                                </div>
+                                <div class="button mt-4" v-if="item2.buttons">
+                                    <red-button class="mr-2"></red-button>
+                                    <green-button></green-button>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <a :href="item2.link"><v-icon color="primary">arrow_right</v-icon> <span v-html="item2.bottomTitle"></span></a>
+                            </div>
+                        </div>
+                    </div>
+            </v-app>
+        </span>
+    </span>
+{% endblock %}
+
+{% block js %}
+    <script>
+        // GALLERY VUE
+        new Vue({
+            delimiters: ['[[', ']]'],
+            vuetify: vuetify,
+            el: '#gallery',
+            data: () => ({
+                gallery: {
+                left: [
+                    {
+                        name: menus[1].sub[0].name,
+                        description: "{% trans 'Envoyez votre marchandise par Conteneur (Conteneur complet/groupage). Groupage vers toutes les destinations.' %}",
+                        route: 'fret-maritime',
+                        position: 1,
+                    },
+                    {
+                        name: menus[1].sub[1].name,
+                        description: "{% trans 'Besoin d&apos;un service rapide, nous nous occupons de tout Aéroports commerciaux dans le monde pour un service rapide.' %}",
+                        route: 'fret-aerien',
+                        position: 2,
+                    },
+                    {
+                        name: menus[1].sub[2].name,
+                        description: "{% trans '3-5 jours de transport, service porte à porte par service courrier vers toutes destinations.' %}",
+                        route: 'colis-express',
+                        position: 3,
+                    },
+                    {
+                        name: menus[1].sub[3].name,
+                        description: "{% trans 'Nous pouvons vous aider dans toutes vos démarches de l&apos;emballage à l&apos;envoi, documents jusqu&apos;à votre nouvelle destination.' %}",
+                        route: 'demenagements-internationaux',
+                        position: 4,
+                    }
+                ],
+                right: [
+                    {
+                        name: menus[1].sub[4].name,
+                        description: "{% trans 'Nous vous conseillons sur les formalités douanières, et le processus d&apos;import/export.' %}",
+                        route: 'formalites-douanieres',
+                        position: 1,
+                    },
+                    {
+                        name: menus[1].sub[5].name,
+                        description: "{% trans 'Grâce à notre réseau, nous organisons des transports frontaliers avec la Birmanie, Laos, Vietnam, Cambodge.' %}",
+                        route: 'transports-frontaliers',
+                        position: 2,
+                    },
+                    {
+                        name: menus[2].sub[1].name,
+                        is_expd: true,
+                        description: "{% trans 'Equipe francophone, un service d&apos;expéditon plus simple et efficace.' %}",
+                        route: 'expedition-france',
+                        position: 3,
+                    },
+                    {
+                        name: menus[2].sub[0].name,
+                        is_expd: true,
+                        description: "{% trans 'Nouvelle Calédonie (Nouméa), La Réunion, Martinique, Guadeloupe, nous déservons toutes ces destinations.' %}",
+                        route: 'expedition-dom-tom',
+                        position: 4,
+                    },
+                    {
+                        name: menus[2].sub[2].name,
+                        is_expd: true,
+                        description: "{% trans 'Un envoi de Chine, nous organisons chacun des aspects du transport à des prix compétitifs.' %}",
+                        route: 'expedition-chine',
+                        position: 5,
+                    },
+                    {
+                        name: menus[2].sub[3].name,
+                        description: '',
+                        route: 'expedition-internationaux',
+                        position: 6,
+                    }
+                ],
+                },
+                table: [
+                {
+                    name: menus[3].name,
+                    text: "{% trans 'Découvrez les promotions actuelles pour les expéditions ou services pour profiter des meilleures offres.' %}",
+                    img: true,
+                    link: 'promos',
+                    bottomTitle: "{% trans 'Tout afficher' %}"
+                },
+                {
+                    name: '{% trans "Expédition Dom Tom" %}',
+                    text: "{% trans 'Nouvelle Calédonie (Nouméa), La Réunion, Martinique, Guadeloupe, nous déservons toutes ces destinations.' %}",
+                    img: false,
+                    link: 'expedition-dom-tom',
+                    bottomTitle: "{% trans 'Plus d&apos;informations' %}"
+                },
+                {
+                    name: "{% trans 'Obtenez votre cotation' %}",
+                    text: "{% trans 'Utilisez notre formulaire pour nous fournir les détails de votre demande nous reviendrons vers vous le plus tôt possible pour vous accompagner.' %}",
+                    img: false,
+                    link: 'contact',
+                    buttons: true,
+                    bottomTitle: '{{ contactUs }}'
+                }
+            ]
+            }),
+            mounted () {
+                document.getElementById('gallery').style.visibility = 'visible';
+            }
+        })
+    </script>
+{% endblock %}

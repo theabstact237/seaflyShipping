@@ -1,0 +1,545 @@
+<!doctype html>
+{% load static %}
+{% load i18n %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'pages/img/ico/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'pages/img/ico/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'pages/img/ico/favicon-16x16.png' %}">
+    <link rel="mask-icon" href="{% static 'pages/img/ico/safari-pinned-tab.svg' %}" color="#5bbad5">
+
+    <title>{% block title %} {% endblock title %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-design-icons-iconfont@5.0.1/dist/material-design-icons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="https://kit.fontawesome.com/edcb8962d6.js" crossorigin="anonymous"></script>
+    <script
+          src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    {% block css %} {% endblock css %}
+    <link rel="stylesheet" href="{% static 'pages/css/base.css' %}">
+</head>
+<body>
+
+    <div id="top">
+        <v-app>
+            <nav>
+                <div class="container" id="header">
+                    <div id="logo">
+                        <a href="{% url 'index' %}">
+                            <img src="{% static 'pages/img/seafly-logo.png' %}" alt="logo" width="78px">
+                        </a>
+                    </div>
+                    <div id="menus" v-if="!is_search" class="disappear ml-5">
+                        <span class="menu--item mr-4" v-for="(item, key) in menus" :key="key">
+                            <div class="text-center align--item">
+                                <v-menu open-on-hover offset-y>
+                                  <template v-slot:activator="{ on }">
+                                      <a :href="'/' + item.route" :class="linkActive(item.route)" v-on="on"> [[ item.name.toUpperCase() ]]</a>
+                                  </template>
+                                  <div v-if="item.sub !== undefined">
+                                    <v-list>
+                                      <v-list-item
+                                              v-for="(item, index) in item.sub"
+                                              :key="index"
+                                              color="primary"
+                                      >
+                                          <v-list-item-title><a :href="'/' + item.route" :class="linkActive(item.route)" style="text-decoration: none" v-html="item.name"></a></v-list-item-title>
+                                      </v-list-item>
+                                    </v-list>
+                                </div>
+                                </v-menu>
+                              </div>
+                        </span>
+                    </div>
+                    <div id="buttons" class="align--item" v-if="!is_search">
+                        <span class="btn--item disappear">
+                            {% trans 'DEVIS GRATUIT' as devis %}
+                            <v-btn color="primary" small class="mr-1" href="/devis">{{ devis }}</v-btn>
+                        </span>
+                        <span v-if="is_good_size" class="align--item disappear">
+                            {% get_current_language as LANGUAGES_CODE %}
+                            <form action="{% url 'set_language' %}" method="post" id="form">
+                              {% csrf_token %}
+                              <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+                              <label>
+                                <select name="language" id="selectlang" onchange="changeLang()">
+                                  {% get_language_info_list for LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                      <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                                        {{ language.name_local }} ({{ language.code }})
+                                      </option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                            </form>
+                        </span>
+                        <span class="btn--item">
+                            <v-btn icon class="btn--item" @click.prevent="search">
+                                <v-icon color="primary">search</v-icon>
+                            </v-btn>
+                        </span>
+
+                        <!-- BURGER BUTTON -->
+                        <span class="btn--item" id="bugger--btn">
+                            <v-app-bar-nav-icon color="primary" class="" @click.prevent="drawer = true"/>
+                        </span>
+                        <!-- END BURGER BUTTON -->
+                    </div>
+                    <transition name="translate">
+                        <div class="search--bar align--item" v-if="is_search">
+                            <form action="search" method="get" style="width: 100%">
+                                <div class="search--elt">
+                                    <input type="text"
+                                           placeholder="{% trans 'Rechercher...' %}"
+                                           class="search--input"
+                                           v-model="my_search"
+                                           id="search"
+                                           name="q"
+                                    >
+                                    <v-btn type="submit" icon class="btn--item input-btn" id="go">
+                                        <v-icon>search</v-icon>
+                                    </v-btn>
+                                </div>
+                            </form>
+
+                            <v-btn icon class="btn--item input-btn" @click.prevent="closed">
+                                <v-icon color="primary" class="">close</v-icon>
+                            </v-btn>
+                        </div>
+                    </transition>
+
+                </div>
+                <v-navigation-drawer
+                            v-model="drawer"
+                            dark app
+                            class="darken-3 py-0"
+                            color="primary"
+                            style="overflow: paged-x"
+                            absolute
+                            temporary
+                    >
+                        <v-container>
+                            <v-row>
+                                <v-col md="12">
+                                    <img src="{% static 'pages/img/seafly-logo.png' %}" alt="logo" width="78px">
+                                </v-col>
+                            </v-row>
+                        </v-container>
+                        <div id="drawer--menu">
+                            <div class="drawer--menu--item" v-for="(item, key) in menus" :key="key">
+                                <div class="drawer--menu--head">
+                                    <div class="drawer--menu--icon"><v-icon color="white" class="">[[item.ico]]</v-icon></div>
+                                    <div class="drawer--menu--title"><a :href="item.route !== undefined ? '/' + item.route : '#'" color="white">[[item.name]]</a></div>
+                                </div>
+                                <div class="drawer--menu--accordeon" v-if="item.sub !== undefined">
+                                    <ul>
+                                        <li v-for="(submenu, k) in item.sub" :key="k"><a :href="'/' + submenu.route">[[submenu.name]]</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <v-layout row style="width: 100%" class="mt-10">
+                            <v-btn color="primary" small class="mb-10" style="margin: auto" href="/devis">{{ devis }}</v-btn>
+                            <div class="align--item drawer--lang">
+                                <form action="{% url 'set_language' %}" method="post" id="form">
+                                  {% csrf_token %}
+                                  <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+                                      {% get_language_info_list for LANGUAGES as languages %}
+                                        {% for language in languages %}
+                                            <v-btn outlined fab x-small color="white" class="ma-2 mt-3 mb-3 {% if language.code == LANGUAGE_CODE %}btn-select{% endif %}" type="submit" value="{{ language.code }}" name="language">{{ language.code }}</v-btn>
+                                        {% endfor %}
+                                </form>
+                            </div>
+                        </v-layout>
+                    </v-navigation-drawer>
+            </nav>
+        </v-app>
+    </div>
+    {% trans 'Nous Contacter' as contactUs %}
+    <div class="container">
+        {% block content %} {% endblock content %}
+    </div>
+
+
+    <footer>
+        <class id="bottom" class="text--primary">
+            <v-app class="ma-0 pa-0" style="height: auto">
+                <div class="float--button">
+                    <v-dialog v-model="dialog" persistent max-width="300px">
+                      <template v-slot:activator="{ on }">
+                        <v-btn class="mx-2" fab dark color="teal" v-on="on">
+                          <v-icon dark>mail_outline</v-icon>
+                        </v-btn>
+                      </template>
+                        <form action="contact" method="post">{% csrf_token %}
+                          <v-card class="card__my">
+                          <span class="mini--form--description"><p>{% trans 'Hors ligne' %}</p><p>{% trans "Veuillez remplir le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais." %}</p></span>
+                            <v-card-text class="mt-5" style="margin-top: 50px">
+                              <v-container>
+                                    <v-text-field
+                                            label="{% trans 'Nom' %}"
+                                            prepend-inner-icon="person"
+                                            name="name"
+                                            required
+                                    ></v-text-field>
+                                    <v-text-field
+                                            label="{% trans 'Email' %}"
+                                            prepend-inner-icon="email"
+                                            name="email"
+                                            required
+                                    ></v-text-field>
+                                    <v-textarea
+                                            outlined
+                                            name="message"
+                                            label="{% trans 'Votre message' %}"
+                                            required
+                                    ></v-textarea>
+                                  <input type="text" name="phone" style="display: none" value="">
+                                  <input type="text" name="company" style="display: none" value="">
+                              </v-container>
+                            </v-card-text>
+                            <v-card-actions>
+                              <v-spacer></v-spacer>
+                              <v-btn color="primary" text @click="dialog = false">{% trans 'Fermer' %}</v-btn>
+                              <v-btn color="blue darken-1" text type="submit">{% trans 'Envoyer' %}</v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </form>
+                    </v-dialog>
+                </div>
+                <v-container>
+                    <div class="footer--items">
+                        <div class="footer--item" :style="{width: item.width + '%'}" v-for="(item, key) in footers" :key="key">
+                            <div class="footer--item--title">
+                                <h3>[[ item.name ]]</h3>
+                            </div>
+                            <div class="footer--item--content text--primary">
+                                <ul>
+                                    <li v-for="(subitem , key) in item.links" :key="key"><a :href="subitem.to !== undefined ? subitem.to : subitem.route">[[ subitem.name ]]</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="footer--item" style="width: 23%">
+                            <div class="footer--item--title">
+                                <h3>{{ contactUs }}</h3>
+                            </div>
+                            <div class="footer--item--content">
+                                <div class="footer--item--subtitle">
+                                    {% trans "Sea Fly Services Co., Ltd." %}
+                                </div>
+                                <div class="align--item">
+                                    <ul style="width: 65%">
+                                        <li v-for="contact in contacts" :key="contact"><a href="contact">[[ contact ]]</a></li>
+                                        <li>
+                                            <v-btn class="ma-2 white--text" style="background: #3B5998; color: white" x-small fab color="facebook">
+                                                <v-icon>fab fa-facebook-f</v-icon>
+                                            </v-btn>
+                                            <v-btn class="ma-2 white--text" style="background: #2867B2; color: white" x-small fab color="linkedin">
+                                                <v-icon>fab fa-linkedin-in</v-icon>
+                                            </v-btn>
+                                        </li>
+                                    </ul>
+                                    <div class="map pr-3" style="width: 35%">
+                                        <a href="contact"><img src="{% static 'pages/img/bottom-map.jpg' %}" alt="" style="width: 100%"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="footer--item" style="width: 25%; border-right: 1px solid #dddddd;">
+                            <div class="footer--item--title">
+                                {% trans 'Nos réseaux' as reseaux %}
+                                <h3>{{ reseaux }}</h3>
+                            </div>
+                            <div class="footer--item--content">
+                                <div class="footer--item--content">
+                                    <div class="imgs">
+                                        <a href="/"><img src="{% static 'pages/img/ftcc-logo.png' %}"></a>
+                                        <a href="/"><img src="{% static 'pages/img/east-west.jpg' %}"></a>
+                                        <a href="/"><img src="{% static 'pages/img/5star-logo.jpg' %}"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="footer--bar"><div class="footer--copy">{% trans '©Sea Fly Services - 2018 tous droits réservés.' %}</div><div class="footer--dev">{% trans 'Developpé par' %}
+                        <a href="#" style="color: var(--primary)">ChickDev.cm</a></div></div>
+                </v-container>
+            </v-app>
+        </class>
+    </footer>
+
+
+    <script>
+        function changeLang () {
+            document.querySelector("#form").submit()
+        }
+
+
+        Vue.component('RedButton', {
+          data: function () {
+            return {
+              count: 0
+            }
+          },
+          template: '<v-btn color="primary" class="mb-2" style="background: #ed120b; color: white; margin-bottom: 6px" href="devis" large>{{devis}}</v-btn>'
+        });
+
+        Vue.component('GreenButton', {
+          data: function () {
+            return {
+              count: 0
+            }
+          },
+          template: `<v-btn style="background: #47d037" class="white--text" href="http://line.me/ti/p/~@seafly" large><img src="{% static 'pages/img/line-square.png' %}" width="109px" alt=""></v-btn>`
+        });
+
+        Vue.component('button-red-green', {
+              data: function () {
+                return {
+                  count: 0
+                }
+              },
+              template: `<div>
+                            <div class="button--contact mr-4 mt-4">
+                                <red-button class="mr-2"></red-button>
+                                <green-button/>
+                            </div>
+                        </div>`
+            });
+
+        Vue.component('GreenButtonCode', {
+          data: function () {
+            return {
+              count: 0
+            }
+          },
+          template: `<v-btn class="white--text mt-3"
+                   style="background-image: url('{% static "pages/img/seafly-line.png" %}'); background-position: center; background-repeat: no-repeat; background-size: cover; width: 196px; box-shadow: 1px 1px 1px white!important;"
+                   large/>`
+        });
+
+    </script>
+
+    <script>
+        let menus = [
+                        {
+                            name: "{% trans 'Notre société' %}",
+                            route: 'about',
+                            ico: 'apartment'
+                        },
+                        {
+                            name: "{% trans 'Nos Services' %}",
+                            sub: [
+                                {
+                                    name: "{% trans 'Fret Maritime' %}",
+                                    route: 'fret-maritime'
+                                },
+                                {
+                                    name: "{% trans 'Fret Aérien' %}",
+                                    route: 'fret-aerien'
+                                },
+                                {
+                                    name: "{% trans 'Service lettre, petit colis express' %}",
+                                    route: 'colis-express'
+                                },
+                                {
+                                    name: "{% trans 'Déménagements' %}",
+                                    route: 'demenagements-internationaux'
+                                },
+                                {
+                                    name: "{% trans 'Formalités Douanières' %}",
+                                    route: 'formalites-douanieres'
+                                },
+                                {
+                                    name: "{% trans 'Transport Frontalier' %}",
+                                    route: 'transports-frontaliers'
+                                },
+                            ],
+                            ico: 'work'
+                        },
+                        {
+                            name: '{% trans "Destinations" %}',
+                            sub: [
+                                {
+                                    name: "{% trans 'DOM TOM' %}",
+                                    route: 'expedition-dom-tom'
+                                },
+                                {
+                                    name: "{% trans 'France' %}",
+                                    route: 'expedition-france'
+                                },
+                                {
+                                    name: "{% trans 'Chine' %}",
+                                    route: 'expedition-chine'
+                                },
+                                {
+                                    name: "{% trans 'Expédition à l&apos;International' %}",
+                                    route: 'expedition-internationaux'
+                                },
+                            ],
+                            ico: 'pin_drop'
+                        },
+                        {
+                            name: "{% trans 'Promotions' %}",
+                            route: 'promos',
+                            ico: 'equalizer'
+                        },
+                        {
+                            name: "{% trans 'F.A.Q' %}",
+                            route: 'faq',
+                            ico: 'contact_support'
+                        },
+                        {
+                            name: "{{ contactUs }}",
+                            route: 'contact',
+                            ico: 'contact_mail'
+                        }
+                    ];
+        let footer = [
+                    {
+                        name: menus[0].name,
+                        links: [
+                            {
+                                name:  menus[0].name,
+                                to: menus[0].route
+                            }
+                            ,
+                            {
+                                name: menus[3].name,
+                                to: menus[3].route
+                            }
+                            ,
+                            {
+                                name: "{% trans 'Carrière' %}",
+                                to: 'career'
+                            }
+                            ,
+                            {
+                                name: menus[5].name,
+                                to: menus[5].route
+                            }
+                        ],
+                        width: 12
+                    },
+                    {
+                        name: menus[1].name,
+                        links: menus[1].sub,
+                        width: 20
+                    },
+                    {
+                        name: "{% trans 'Outils & Ressources' %}",
+                        links: [
+                            {
+                                name: "{% trans 'Conversions Volumétriques' %}",
+                                to: 'convert'
+                            },
+                            {
+                                name: "{% trans 'Incoterms' %}",
+                                to: 'incoterms'
+                            },
+                            {
+                                name: "{% trans 'Spécifications sur les Conteneurs' %}",
+                                to:  'specification'
+                            },
+                        ],
+                        width: 20
+                    }
+                ];
+        let vuetify = new Vuetify({
+                icons: {
+                    iconfont: 'md' || 'fa'
+                },
+                theme: {
+                    themes: {
+                        light: {
+                            primary: '#ed120b',
+                            linkedin: '#2867B2',
+                            facebook: '#3B5998'
+                        },
+                    },
+                }
+            });
+        // TOP VUE
+        new Vue({
+            delimiters: ['[[', ']]'],
+            vuetify: vuetify,
+            el: '#top',
+            data: () => {
+            return {
+                drawer: false,
+                menus: menus,
+                btns: [
+                    'en',
+                    'fr',
+                    'th'
+                ],
+                is_search: false,
+                is_good_size: true,
+                my_search: ''
+            }
+            },
+            mounted() {
+                document.getElementById('top').style.visibility = 'visible';
+            },
+            methods: {
+                search: function() {
+                    if(!this.is_search) {
+                      this.is_search = true;
+                    } else{
+                      if(this.my_search === ''){
+                          this.closed();
+                      } else {
+                          console.log("Search")
+                      }
+                    }
+                },
+                closed () {
+                    this.is_search = false
+                },
+                linkActive(path) {
+                    return window.location.pathname.includes(path) ? 'active-link' : '';
+                }
+            }
+        });
+
+        // BOTTOM VUE
+        new Vue({
+            delimiters: ['[[', ']]'],
+            vuetify: vuetify,
+            el: '#bottom',
+            data: () => ({
+                footers: footer,
+                contacts: [
+                    "{% trans '93/1 Soi Suntornsiri, Huaikwang,' %}",
+                    "{% trans 'Bangkok,Thailand 10310' %}",
+                    "{% trans 'Tel: +66(0) 26903523 - 7' %}"
+                ],
+              dialog: false,
+            }),
+            mounted(){
+                document.getElementById('bottom').style.visibility = 'visible';
+            }
+        })
+    </script>
+    <script src="{% static 'pages/js/accordeon.js' %}"></script>
+    {% block js %} {% endblock js %}
+</body>
+</html>

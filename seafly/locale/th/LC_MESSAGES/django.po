@@ -1,0 +1,874 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-05 03:27+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\pages\utils.py:47
+msgid ""
+"Le text saisie dans le champs possède un tros grand nombre de caractère la "
+"taille maximale est {} caractères"
+msgstr "ข้อความที่ป้อนในฟิลด์มีอักขระจำนวนมากขนาดสูงสุดคือ {} อักขระ"
+
+#: .\pages\utils.py:69
+#, fuzzy
+#| msgid ""
+#| "Le text saisie dans le champs possède un tros grand nombre de caractère "
+#| "la taille maximale est {} caractères"
+msgid ""
+"Le text saisie dans le champs possède un très grand nombre de caractère la "
+"taille maximale est {} caractères"
+msgstr "ข้อความที่ป้อนในฟิลด์มีอักขระจำนวนมากขนาดสูงสุดคือ {} อักขระ"
+
+#: .\pages\utils.py:90 .\pages\utils.py:93 .\pages\utils.py:100
+#: .\pages\utils.py:106 .\pages\utils.py:109 .\pages\utils.py:120
+#: .\pages\utils.py:122 .\pages\utils.py:128 .\pages\utils.py:130
+#: .\pages\utils.py:132 .\pages\utils.py:133 .\pages\utils.py:135
+#: .\pages\utils.py:137 .\pages\utils.py:139
+msgid "Ce champs est obligatoire"
+msgstr "ต้องระบุข้อมูลในฟิลด์นี้"
+
+#: .\pages\utils.py:92 .\pages\utils.py:108
+msgid "Adresse mail invalid respecter le format : test@test.test !"
+msgstr "ที่อยู่อีเมลไม่ถูกต้องตามรูปแบบ: test@test.test!"
+
+#: .\pages\utils.py:96 .\pages\utils.py:112
+msgid ""
+"Veuillez saisir un numéro de téléphone valide au format +(XXX)XXXXXXXX.."
+msgstr "กรุณากรอกแบบฟอร์มด้านล่างและเราจะติดต่อกลับโดยเร็วที่สุด"
+
+#: .\template\pages\base.html:70
+msgid "DEVIS GRATUIT"
+msgstr "อัตราค่าบริการขนส่ง"
+
+#: .\template\pages\base.html:107
+msgid "Rechercher..."
+msgstr "ค้นหา..."
+
+#: .\template\pages\base.html:172
+msgid "Nous Contacter"
+msgstr "ติดต่อเรา"
+
+#: .\template\pages\base.html:190
+msgid "Hors ligne"
+msgstr "ออฟไลน์"
+
+#: .\template\pages\base.html:190
+msgid ""
+"Veuillez remplir le formulaire ci-dessous et nous vous répondrons dans les "
+"plus brefs délais."
+msgstr "กรุณากรอกแบบฟอร์มด้านล่างและเราจะติดต่อกลับโดยเร็วที่สุด"
+
+#: .\template\pages\base.html:194 .\template\pages\contact.html:111
+#: .\template\pages\devis.html:239
+msgid "Nom"
+msgstr "ชื่อ"
+
+#: .\template\pages\base.html:200 .\template\pages\contact.html:119
+#: .\template\pages\devis.html:247
+msgid "Email"
+msgstr "อีเมล"
+
+#: .\template\pages\base.html:208 .\template\pages\contact.html:144
+msgid "Votre message"
+msgstr "ข้อความ"
+
+#: .\template\pages\base.html:217
+msgid "Fermer"
+msgstr "ใกล้"
+
+#: .\template\pages\base.html:218 .\template\pages\contact.html:148
+#: .\template\pages\devis.html:263
+msgid "Envoyer"
+msgstr "ส่งข้อความ"
+
+#: .\template\pages\base.html:244 .\template\pages\contact.html:174
+msgid "Sea Fly Services Co., Ltd."
+msgstr "ซีฟลาย เซอร์วิส"
+
+#: .\template\pages\base.html:268
+msgid "Nos réseaux"
+msgstr "เครือข่ายสมาชิก"
+
+#: .\template\pages\base.html:282
+msgid "©Sea Fly Services - 2018 tous droits réservés."
+msgstr "©2018 Sea Fly Services. All Rights Reserved."
+
+#: .\template\pages\base.html:282
+msgid "Developpé par"
+msgstr "พัฒนาโดย"
+
+#: .\template\pages\base.html:344
+msgid "Notre société"
+msgstr "เกี่ยวกับบริษัท"
+
+#: .\template\pages\base.html:349
+msgid "Nos Services"
+msgstr "บริการของเรา"
+
+#: .\template\pages\base.html:352
+msgid "Fret Maritime"
+msgstr "บริการขนส่งทางเรือ"
+
+#: .\template\pages\base.html:356
+msgid "Fret Aérien"
+msgstr "บริการขนส่งทางเครื่องบิน"
+
+#: .\template\pages\base.html:360
+msgid "Service lettre, petit colis express"
+msgstr "บริการจัดส่งพัสดุ"
+
+#: .\template\pages\base.html:364
+msgid "Déménagements"
+msgstr "บริการย้ายบ้านและของใช้ส่วนตัว"
+
+#: .\template\pages\base.html:368
+msgid "Formalités Douanières"
+msgstr "บริการผ่านพิธีการศุลกากร"
+
+#: .\template\pages\base.html:372
+msgid "Transport Frontalier"
+msgstr "บริการขนส่งผ่านชายแดน"
+
+#: .\template\pages\base.html:379
+msgid "Destinations"
+msgstr "เส้นทางบริการ"
+
+#: .\template\pages\base.html:382
+msgid "DOM TOM"
+msgstr "การขนส่งระหว่างดอมทอม"
+
+#: .\template\pages\base.html:386
+msgid "France"
+msgstr "การขนส่งระหว่างฝรั่งเศส"
+
+#: .\template\pages\base.html:390
+msgid "Chine"
+msgstr "การขนส่งระหว่างจีน"
+
+#: .\template\pages\base.html:394
+msgid "Expédition à l&apos;International"
+msgstr "การขนส่งทั่วโลก"
+
+#: .\template\pages\base.html:401
+msgid "Promotions"
+msgstr "โปรโมชั่น"
+
+#: .\template\pages\base.html:406
+msgid "F.A.Q"
+msgstr "คำถามการขนส่ง"
+
+#: .\template\pages\base.html:431
+msgid "Carrière"
+msgstr "ร่วมงานกับเรา"
+
+#: .\template\pages\base.html:448
+msgid "Outils & Ressources"
+msgstr "ข้อมูลและเครื่องมือ"
+
+#: .\template\pages\base.html:451 .\template\pages\convert.html:5
+msgid "Conversions Volumétriques"
+msgstr "เครื่องมือคำนวณ"
+
+#: .\template\pages\base.html:455 .\template\pages\incoterms.html:5
+#: .\template\pages\incoterms.html:102
+msgid "Incoterms"
+msgstr "ข้อตกลงการค้า Incoterms"
+
+#: .\template\pages\base.html:459 .\template\pages\specification.html:5
+#: .\template\pages\specification.html:84
+msgid "Spécifications sur les Conteneurs"
+msgstr "ขนาดตู้คอนเทนเนอร์"
+
+#: .\template\pages\base.html:531
+msgid "93/1 Soi Suntornsiri, Huaikwang,"
+msgstr "93/1 ซ.สุนทรศิริ ถ.ประชาราฎร์บำเพ็ญ ห้วยขวาง"
+
+#: .\template\pages\base.html:532
+msgid "Bangkok,Thailand 10310"
+msgstr " กรุงเทพมหานคร 10310"
+
+#: .\template\pages\base.html:533
+msgid "Tel: +66(0) 26903523 - 7"
+msgstr "โทร: 02 6903523 - 7"
+
+#: .\template\pages\contact.html:4
+msgid "Contactez Nous"
+msgstr "ติดต่อเรา"
+
+#: .\template\pages\contact.html:4 .\template\pages\convert.html:5
+#: .\template\pages\devis.html:5 .\template\pages\faq.html:6
+#: .\template\pages\incoterms.html:5 .\template\pages\page-promos.html:6
+#: .\template\pages\page.html:4 .\template\pages\promos.html:5
+#: .\template\pages\search.html:5 .\template\pages\specification.html:5
+msgid "Sea Fly Services Transitaire Français basé en Thaïlande"
+msgstr "ซีฟลาย บริการขนส่งต่างประเทศ ทั้งนำเข้าและส่งออก"
+
+#: .\template\pages\contact.html:90
+msgid "Lien Google Maps :"
+msgstr "นำทางโดยใช้ Google Maps :"
+
+#: .\template\pages\contact.html:127
+msgid "Téléphone"
+msgstr "เบอร์โทรศัพท์"
+
+#: .\template\pages\contact.html:135
+msgid "Société"
+msgstr "บริษัท/หน่วยงาน (ถ้ามี)"
+
+#: .\template\pages\contact.html:175
+msgid "93/1 Soi Pracharat Bamphen 6 (Soi Suntornsiri)"
+msgstr "93/1 ซ.สุนทรศิริ ถ.ประชาราษฎร์บำเพ็ญ"
+
+#: .\template\pages\contact.html:176
+msgid "Huaikwang, Bangkok"
+msgstr "ห้วยขวาง กรุงเทพมหานคร"
+
+#: .\template\pages\contact.html:177
+msgid "Thailand 10310"
+msgstr "10310"
+
+#: .\template\pages\contact.html:181
+msgid "Département commercial"
+msgstr "ฝ่ายขาย"
+
+#: .\template\pages\contact.html:182
+msgid "Tel: 66(0) 26903523 - 7"
+msgstr "โทร: 02-6903523-7"
+
+#: .\template\pages\contact.html:186
+msgid "Heures d&apos;ouvertures"
+msgstr "วันและเวลาทำการ"
+
+#: .\template\pages\contact.html:187
+msgid "Du Lundi au Vendredi"
+msgstr "จันทร์ - ศุกร์"
+
+#: .\template\pages\contact.html:188
+msgid "09:00 - 17:30"
+msgstr "09:00 - 17:30"
+
+#: .\template\pages\convert.html:103
+msgid ""
+"Le terme \"poids volumétrique\", parfois appelé \"dim\" ou encore poids "
+"dimensionnel, est employé par rapport à l&apos;espace que prend un colis "
+"dans l&apos;avion. Il peut coûter plus cher que le poids réel ( ou brut ) du "
+"paquet. Vous devrez calculer le poids dimensionnel sur chaque expédition, et "
+"comparer cela à son poids brut. Enfin le poids le plus conséquent des deux "
+"déterminera le poids taxable ou chargeable, donc votre coût d&apos;expédition"
+msgstr ""
+"Volumetric weight บางครั้งเรียกว่า \"dim\" หรือ dimensional weight "
+"จะใช้เมื่อขนาดของสินค้ามีขนาดใหญ่ และเมื่อคำนวณแล้ว น้ำหนัก dimensional weight มีค่ามากกว่า "
+"น้ำหนักจริงของสินค้า  ซึ่งในการคิดค่าระวางสินค้า จะต้องใช้น้ำหนักที่หนักมากกว่า มาคำนวณ"
+
+#: .\template\pages\convert.html:106
+msgid ""
+"Utilisez ces tableaux si vous devez convertir des livres en kilogramme ou "
+"encore pieds et pouces en cm."
+msgstr "ใช้ตารางเหล่านี้หากคุณต้องการแปลงปอนด์เป็นกิโลกรัมหรือฟุตและนิ้วเป็นเซนติเมตร"
+
+#: .\template\pages\convert.html:110
+msgid "Conversion en kilogramme"
+msgstr "คำนวณเป็นกิโลกรัม"
+
+#: .\template\pages\convert.html:111
+msgid "Conversion en cm"
+msgstr "คำนวณเป็นเซนติเมตร"
+
+#: .\template\pages\convert.html:145
+msgid "Centimètre"
+msgstr "เซนติเมตร"
+
+#: .\template\pages\convert.html:153
+msgid ""
+"Pour les expéditions légères le poids volumétrique sera utilisé si celui-ci "
+"excède le poids réel (en kilogrammes). Pour calculer le poids volumétrique, "
+"il faut entrer la largeur, la longueur et la hauteur de votre colis (en "
+"centimètres) dans les champs ci-dessous et appuyer sur le bouton calcul."
+msgstr ""
+"สำหรับการจัดส่งแบบเบาน้ำหนักแบบปริมาตรจะถูกใช้หากมีน้ำหนักเกินน้ำหนักจริง (เป็นกิโลกรัม) "
+"ในการคำนวณน้ำหนักมิติให้ป้อนความกว้างความยาวและความสูงของแพ็คเกจ (เป็นเซนติเมตร) "
+"ในฟิลด์ด้านล่างและกดปุ่มคำนวณ"
+
+#: .\template\pages\convert.html:157
+msgid "Conversion du Poids volumétrique"
+msgstr "คำนวณเป็นน้ำหนัก volumetric weight\t"
+
+#: .\template\pages\convert.html:162
+msgid "Longueur (cm)"
+msgstr "กว้าง (cms)"
+
+#: .\template\pages\convert.html:168
+msgid "Largeur (cm)"
+msgstr "สูง (cms)"
+
+#: .\template\pages\convert.html:174
+msgid "Hauteur (cm)"
+msgstr "ยาว (cms)"
+
+#: .\template\pages\convert.html:181
+msgid "Volume (cm3)"
+msgstr "ปริมาณ"
+
+#: .\template\pages\convert.html:190
+msgid "Poids volumetrique (Kg)"
+msgstr "น้ำหนักปริมาตร (กก.)"
+
+#: .\template\pages\convert.html:198
+msgid "CALCUL DU POIDS DE VOLUME SUR LE FRET AÉRIEN :"
+msgstr "วิธีการคิด"
+
+#: .\template\pages\convert.html:200
+msgid "- Exemple :"
+msgstr "- วิธีการคิด"
+
+#: .\template\pages\convert.html:202
+msgid ""
+"40 x 48 x 60 cm, poids brut = 5 kilogrammes Le poids volume est : 40 x 48 x "
+"60 = 115.200 volumes (cm³) Le volume kilogramme est de 115.200 / 6.000 = "
+"19.2 Votre poids de volume est plus élevé que le poids réel (19.2 "
+"kilogrammes contre 5 kilogrammes), donc, votre poids imputable sera de 19.5 "
+"kilogrammes. Le poids de chargement de la compagnie aérienne est calculé en "
+"fonction des deux poids réel et volume, c&apos;est-à-dire  : 6m³ = 1000 kg "
+"(poids de volume)."
+msgstr ""
+"ตัวอย่าง 40x48x60 cms, gross weight = 5 kgs volume weight คือ: 40x48x60 = "
+"115,200 Volume 115,200 หารด้วย 6,000 = 19.2 volume kgs น้ำหนัก volume weight "
+"หนักกว่า grossl weight (19.2 kg ต่อ 5 kgs), เพราะฉะนั้น จะคำนวณค่าใช้จ่ายจะ "
+"ต้องใช้น้ำหนัก 19.2 kgs. "
+
+#: .\template\pages\convert.html:215 .\template\pages\faq.html:137
+#: .\template\pages\incoterms.html:129 .\template\pages\page-promos.html:156
+#: .\template\pages\page.html:138 .\template\pages\specification.html:186
+msgid "Notre experience de 20 ans a votre disposition pour votre envoi."
+msgstr ""
+"เรายินดีให้คำปรึกษาทุกเรื่องด้านการขนส่งระหว่างประเทศ ด้วยทีมงานและประสบการณ์กว่า 20 "
+"ปีของเรา"
+
+#: .\template\pages\devis.html:5
+msgid "Devis d'envoi"
+msgstr "ส่งใบเสนอราคา"
+
+#: .\template\pages\devis.html:75
+msgid "Veuillez utiliser ce formulaire pour votre demande d'envoi."
+msgstr ""
+"กรุณาใช้แบบฟอร์มด้านล่างนี้เพื่อส่งรายละเอียดให้กับเรา "
+"เพื่อทำการคำนวณค่าใช้จ่ายในการขนส่งในขั้นตอนต่อไป"
+
+#: .\template\pages\devis.html:86
+msgid "Départ"
+msgstr "ต้นทาง (สถานที่รับสินค้า)"
+
+#: .\template\pages\devis.html:91 .\template\pages\devis.html:180
+msgid "Pays"
+msgstr "ประเทศ"
+
+#: .\template\pages\devis.html:92 .\template\pages\devis.html:181
+msgid "Sélectionner votre pays"
+msgstr "กรุณาเลือก"
+
+#: .\template\pages\devis.html:98
+msgid "Lieu d&apos;enlèvement"
+msgstr "เมือง/รหัสไปรษณีย์"
+
+#: .\template\pages\devis.html:108
+msgid "Information"
+msgstr "รายละเอียดการขนส่ง"
+
+#: .\template\pages\devis.html:110
+msgid "Marchandise"
+msgstr "สินค้า/ของที่ต้องการส่ง"
+
+#: .\template\pages\devis.html:119
+msgid "Poids"
+msgstr "น้ำหนัก (โดยประมาณ)"
+
+#: .\template\pages\devis.html:128 .\template\pages\devis.html:146
+msgid "Unité"
+msgstr "เอกภาพ"
+
+#: .\template\pages\devis.html:137
+msgid "Volume"
+msgstr "ปริมาตร (โดยประมาณ)"
+
+#: .\template\pages\devis.html:155
+msgid "Type de l&apos;emballage"
+msgstr "แพ็คกิ้ง"
+
+#: .\template\pages\devis.html:156
+msgid "Sélectionner votre type d&apos;emballage"
+msgstr "ยังไม่ได้แพ็ค"
+
+#: .\template\pages\devis.html:165
+msgid "Dimension"
+msgstr "ขนาด กว้างยาวสูง"
+
+#: .\template\pages\devis.html:166
+msgid "Veuillez nous informer les dimensions (si possible)"
+msgstr "กรุณาระบุขนาดความ กว้างxยาวxสูง (หากทำการวัดแล้ว)"
+
+#: .\template\pages\devis.html:175
+msgid "Arrivée"
+msgstr "ปลายทาง (สถานที่ส่งสินค้า)"
+
+#: .\template\pages\devis.html:187
+msgid "Lieu de livraison"
+msgstr "เมือง/รหัสไปรษณีย์"
+
+#: .\template\pages\devis.html:197
+msgid "Modes de transport"
+msgstr "ประเภทการขนส่ง"
+
+#: .\template\pages\devis.html:215
+msgid "Date d&apos;expédition prévue"
+msgstr "คาดว่าจะขนส่งในช่วงเวลา"
+
+#: .\template\pages\devis.html:220
+msgid "Sélectionner"
+msgstr "เลือก"
+
+#: .\template\pages\devis.html:229
+msgid "Information supplémentaire / conditions spéciales (facultatif)"
+msgstr "ข้อมูลอื่นๆ ความต้องการพิเศษ (ถ้ามี)"
+
+#: .\template\pages\devis.html:233
+msgid ""
+"Merci de nous communiquer un maximum d'informations pour etablir votre devis."
+msgstr "กรุณาระบุรายละเอียดให้ได้มากที่สุด เพื่อที่จะทำให้เราคำนวณค่าใช้จ่ายได้เร็วขึ้น"
+
+#: .\template\pages\devis.html:255
+msgid "Téléphone (facultatif)"
+msgstr "โทรศัพท์"
+
+#: .\template\pages\devis.html:273
+msgid "via air"
+msgstr "ทางเครื่องบิน"
+
+#: .\template\pages\devis.html:274
+msgid "via maritime"
+msgstr "ทางเรือ "
+
+#: .\template\pages\devis.html:275
+msgid "via ferroviaire"
+msgstr "ทางรถ"
+
+#: .\template\pages\devis.html:276
+msgid "Veillez me conseiller la meuilleur solution"
+msgstr "ให้เราเลือกวิธีที่เหมาะสมให้"
+
+#: .\template\pages\devis.html:289
+msgid "Non empaqueté"
+msgstr "ไม่ได้บรรจุ"
+
+#: .\template\pages\devis.html:289
+msgid "Caisse"
+msgstr "กรณี"
+
+#: .\template\pages\devis.html:289
+msgid "Cartons"
+msgstr "การ์ด"
+
+#: .\template\pages\devis.html:289
+msgid "Palettisé"
+msgstr "วางบนแท่นวาง"
+
+#: .\template\pages\devis.html:290
+msgid ""
+"['Dès que possible', 'Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', "
+"'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre']"
+msgstr ""
+"['เร็วที่สุด', 'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', "
+"'กรกฎาคม', 'สิงหาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน' , 'ธันวาคม']"
+
+#: .\template\pages\faq.html:5
+msgid "FAQ – Foire aux questions"
+msgstr "คำถามด้านการขนส่งระหว่างประเทศ"
+
+#: .\template\pages\faq.html:6
+msgid "FAQ &#8211; Foire aux questions"
+msgstr "คำถามด้านการขนส่งระหว่างประเทศ"
+
+#: .\template\pages\faq.html:125
+msgid "Plus d'information"
+msgstr "ข้อมูลเพิ่มเติม"
+
+#: .\template\pages\faq.html:164
+msgid "Que contient notre offre Porte à Porte ?"
+msgstr "ข้อเสนอ Door to Door ของเรามีอะไรบ้าง"
+
+#: .\template\pages\faq.html:168
+msgid "Quelle solution est la plus économique pour mon envoi ?"
+msgstr "โซลูชันใดประหยัดที่สุดสำหรับการจัดส่งของฉัน"
+
+#: .\template\pages\faq.html:172
+msgid "Quelles sont les dimensions et volumes des conteneurs ?"
+msgstr "ขนาดและปริมาณของภาชนะบรรจุคืออะไร?"
+
+#: .\template\pages\faq.html:176
+msgid "Comment calculez le volume de mon envoi ?"
+msgstr "จะคำนวณปริมาณการจัดส่งของฉันได้อย่างไร"
+
+#: .\template\pages\faq.html:180
+msgid ""
+"Par aérien, quelle est la différence entre poids réel et poids taxable ?"
+msgstr "ทางอากาศความแตกต่างระหว่างน้ำหนักจริงและน้ำหนักที่ต้องเสียภาษีคืออะไร"
+
+#: .\template\pages\faq.html:184
+msgid "Qu&apos;est ce qu&apos;un transitaire ?"
+msgstr "ผู้ส่งของคืออะไร"
+
+#: .\template\pages\faq.html:188
+msgid ""
+"Mon envoi nécessite-t-il un emballage spécial pour le transport de "
+"marchandises?"
+msgstr "การจัดส่งของฉันต้องการบรรจุภัณฑ์พิเศษสำหรับการขนส่งสินค้าหรือไม่"
+
+#: .\template\pages\incoterms.html:106
+msgid ""
+"Les Incoterms sont des règles internationales qui sont acceptées par les "
+"gouvernements, les autorités judiciaires et professionels du monde entier "
+"pour l’interprétation des termes les plus couramment utilisés dans le "
+"commerce international. Ils réduisent ou suppriment complètement les "
+"incertitudes découlant des différentes interprétations de ces termes dans "
+"les différents pays."
+msgstr ""
+"ข้อกําหนดในการส่งมอบสินค้า หรือเงื่อนไขการส่งมอบสินค้า Incoterms (International "
+"Commercial Terms) ระหว่างผู้ซื้อกับผู้ขายที่เป็นสากล ซึ่งกําหนดขึ้นโดยสภาหอการค้านานาชาติ "
+"(International Chamber of Commerce)เพื่อให้คู่ค้าทั้งผู้ซื้อ "
+"และผู้ขายทราบถึงขอบเขตความรับผิดชอบภาระค่าใช้จ่ายและความ "
+"เสี่ยงต่างๆโดยช่วยให้ทั้งสองฝ่ายที่มีความ แตกต่างทางวัฒนธรรมมีความเข้าใจตรงกัน โดย INCOTERM "
+"ปี 2010 มีทั้งหมด 11 รูปแบบ ซึ่งกำหนดไว้ดังต่อไปนี้"
+
+#: .\template\pages\incoterms.html:155
+msgid ""
+"La marchandise est disponible dans les locaux du vendeur à une date fixée. "
+"L’acheteur organise et paie le transport. Il en supporte aussi les risques "
+"jusqu’à la destination finale des marchandises. Les formalités et frais "
+"d’exportation et d’importation, ainsi que les droits et taxes liés à ces "
+"deux opérations sont également à la charge de l’acheteur."
+msgstr ""
+"เงื่อนไข การส่งมอบนี้ ผู้ขายจะสิ้นสุดภาระการส่งมอบสินค้าเมื่อ "
+"ผู้ขายได้เตรียมสินค้าไว้พร้อมสำหรับส่งมอบ ให้กับผู้ซื้อ ณ."
+"สถานที่ของผู้ขายเองโดยผู้ซื้อจะต้องรับผิดชอบค่าใช้จ่ายต่างๆ ในการขนส่งสินค้าไป "
+"ยังคลังสินค้าของผู้ซื้อเอง"
+
+#: .\template\pages\incoterms.html:157
+msgid ""
+"Le vendeur remet les marchandises au transporteur désigné et payé par "
+"l’acheteur. Le transfert de risques est matérialisé lors de cette opération. "
+"Les formalités et frais d’exportation, ainsi que les droits et taxes liés, "
+"sont à la charge du vendeur. L’acheteur endosse le transport jusqu’à ces "
+"lieux d’activité, effectue les formalités à l’import et acquitte les droits "
+"et taxes liés."
+msgstr ""
+"เงื่อนไข การส่งมอบนี้ ผู้ขายจะสิ้นสุดภาระการส่งมอบสินค้า เมื่อ ผู้ขายได้ ส่งมอบสินค้าให้กับผู้รับขน "
+"ส่งที่ระบุโดยผู้ซื้อ ณ สถานที่ของผู้รับ ขนส่งที่ ผู้ขายต้องทําพิธีการส่งออกรับผิดชอบค่าใช้จ่ายใน "
+"การขนส่งสินค้า และความเสี่ยงภัยระหว่างการขนส่งจากสถานที่ของผู้ขายจน กระทั่งถึงสถานที่ของ "
+"ผู้รับขนส่ง ฯ ส่วนค่าใช้จ่ายต่าง ๆ ในการขนสินค้าและความเสี่ยงภัยต่าง ๆไปยังจุดหมายปลายทาง "
+"เป็นของผู้ซื้อ"
+
+#: .\template\pages\incoterms.html:158
+msgid ""
+"Le vendeur règle les frais de transport jusqu’au port d’embarquement et "
+"effectue les formalités d’exportation, acquitte les frais, droits et taxes "
+"liés à ces formalités. La marchandise est livrée le long du navire dans le "
+"port d’embarquement: cette livraison marque le transfert de risques et de "
+"frais. L’acheteur supporte les coûts de chargement, le transport maritime, "
+"les coûts de déchargement et de transport du port de destination jusqu’à ses "
+"lieux d’activité."
+msgstr ""
+"เงื่อนไข การส่งมอบนี้ ผู้ขายจะสิ้นสุดภาระการส่งมอบสินค้า เมื่อผู้ขายได้นํา สินค้าไปยังกาบเรือ ณ "
+"ท่าเรือต้นทางที่ระบุไว้ ส่วนค่าใช้จ่ายในการนำของขึ้นเรือ ค่าใช้จ่ายในการขนส่งสินค้า "
+"ความเสี่ยงภัยในการนำของขึ้นเรือและระหว่างการขนส่งเป็นภาระของผู้ซื้อใน ทันทีที่สินค้า "
+"ถูกส่งมอบไปยัง กาบเรือและผู้ซื้อต้องรับผิดชอบการทําพิธีการส่งออกด้วย"
+
+#: .\template\pages\incoterms.html:159
+msgid ""
+"La marchandise est livrée sur le navire désigné par l’acheteur. Aux termes "
+"des règles 2010, la notion de passage de bastingage qui matérialisait "
+"jusqu’alors le transfert de risque a disparu. Désormais, le transfert de "
+"risque et de frais s’opère quand la marchandise a été livrée sur le navire. "
+"Le vendeur règle les frais de transport jusqu’au port d’embarquement, ainsi "
+"que les frais de chargement et effectue les formalités d’exportation, "
+"acquitte les frais, droits et taxes liés à ces formalités."
+msgstr ""
+"เงื่อนไข การส่งมอบนี้ ผู้ขายจะสิ้นสุดภาระการส่งมอบสินค้า เมื่อ ผู้ขายได้ส่งมอบสินค้าข้ามกาบเรือขึ้น "
+"ไปบนเรือสินค้า ณ ท่าเรือต้นทาง ที่ระบุไว้ ผู้ขายเป็นผู้รับผิดชอบการทําพิธีการส่งออกด้วย ส่วนค่าใช้จ่าย "
+"ในการขนส่งสินค้า และค่าใช้จ่ายอื่น ๆ รวมทั้งความเสี่ยงภัยในการ ขนส่งสินค้าเป็นภาระของผู้ซื้อ "
+"ในทันทีที่ของผ่าน กาบระวางเรือไปแล้ว"
+
+#: .\template\pages\incoterms.html:160
+msgid ""
+"Le vendeur assume les frais du transport maritime jusqu’au port de "
+"destination. Le transfert de risque est établi lorsque les marchandises sont "
+"mises à la disposition du premier transporteur. Ainsi, les frais d’assurance "
+"sont à la charger de l’acheteur."
+msgstr ""
+"เงื่อนไข การส่งมอบนี้ ผู้ขายจะสิ้นสุดภาระการส่งมอบสินค้าเมื่อ ผู้ขายได้ส่งมอบสินค้า "
+"ให้ผู้รับขนส่งที่ระบุโดยผู้ซื้อ ณ สถานที่ของผู้รับขนส่งสินค้าที่เมืองท่าต้นทาง ผู้ขายเป็น ผู้รับผิดชอบในการ "
+"ทําพิธีการส่งออกและจ่ายค่าระวางขนส่งสินค้าส่วนค่าใช้จ่าย อื่น ๆ รวมทั้งความเสี่ยงภัย "
+"ในการขนส่งเป็นภาระ ของผู้ซื้อในทันทีที่สินค้าถูกส่ง มอบให้แก่ผู้รับขนส่งสินค้าที่เมืองท่าต้นทาง"
+
+#: .\template\pages\incoterms.html:161
+msgid ""
+"Les conditions sont les mêmes que pour CPT. Le vendeur doit fournir une "
+"assurance couvrant pour l’acheteur, le risque de perte ou de dommage que la "
+"marchandise peut courir pendant le transport."
+msgstr ""
+"เงื่อนไข การส่งมอบนี้ ผู้ขายจะสิ้นสุดภาระการส่งมอบสินค้าเมื่อ ผู้ขายได้ส่งมอบสินค้า "
+"ให้ผู้รับขนส่งที่ระบุโดยผู้ซื้อ ณ สถานที่ของผู้รับขนส่งสินค้าที่เมืองท่าต้นทาง "
+"ผู้ขายเป็นผู้รับผิดชอบในการทําพิธีการส่งออก จ่ายค่าระวาง ขนส่งสินค้า และค่าประกันภัยขนส่งสินค้า "
+"เพื่อคุ้มครองความเสี่ยงภัยในการขนส่งสินค้าจนถึงมือผู้ซื้อให้แก่ผู้ซื้อด้วย"
+
+#: .\template\pages\incoterms.html:162
+msgid ""
+"Le transfert de risque s’opère lorsque les marchandises sont livrées à bord "
+"du bateau dans le port d’embarquement. Le vendeur assume de plus les frais "
+"de transport jusqu’au port de destination et les frais de chargement, il "
+"effectue les formalités d’export et paie les droits et taxes liés. "
+"L’acheteur endosse les frais à partir de l’arrivée des marchandises au port "
+"de destination, effectue les formalités à l’import et acquitte les droits et "
+"taxes liés."
+msgstr ""
+"เงื่อนไข การส่งมอบนี้ ผู้ขายจะสิ้นสุดภาระการส่งมอบสินค้าเมื่อ "
+"ผู้ขายได้ส่งมอบสินค้าข้ามกาบเรือขึ้นไปบน เรือสินค้า ผู้ขายเป็นผู้รับผิดชอบ ในการทําพิธีการส่งออก "
+"และจ่ายค่าระวางขนส่งสินค้า ส่วนค่าใช้จ่ายอื่น "
+"ๆรวมทั้งความเสี่ยงภัยในการขนส่งสินค้าเป็นภาระของผู้ซื้อใน ทันทีที่ของผ่าน กาบระวางเรือไปแล้ว"
+
+#: .\template\pages\incoterms.html:163
+msgid ""
+"Le transfert de risque s’opère lorsque les marchandises sont livrées à bord "
+"du bateau dans le port d’embarquement. Le vendeur assume de plus les frais "
+"de transport et d’assurance jusqu’au port de destination et les frais de "
+"chargement, il effectue les formalités d’export et paie les droits et taxes "
+"liés. L’acheteur endosse les frais à partir de l’arrivée des marchandises au "
+"port de destination, effectue les formalités à l’import et acquitte les "
+"droits et taxes liés."
+msgstr ""
+"เงื่อนไข การส่งมอบนี้ ผู้ขายจะสิ้นสุดภาระการส่งมอบสินค้าเมื่อ "
+"ผู้ขายได้ส่งมอบสินค้าข้ามกาบเรือขึ้นไปบน เรือสินค้า ผู้ขายเป็นผู้รับผิดชอบ ในการทําพิธีการส่งออก "
+"และจ่ายค่าระวางขนส่งสินค้า ส่วนค่าใช้จ่ายอื่น "
+"ๆรวมทั้งความเสี่ยงภัยในการขนส่งสินค้าเป็นภาระของผู้ซื้อใน ทันทีที่ของผ่าน กาบระวางเรือไปแล้ว"
+
+#: .\template\pages\incoterms.html:164
+msgid ""
+"Outre le transport principal, le vendeur organise et paie le déchargement de "
+"la marchandise au point de destination et son acheminement jusqu’au terminal "
+"convenu. Le transfert de risque est effectif lorsque la marchandise a été "
+"mise à la disposition de l’acheteur au terminal convenu. L’acheteur effectue "
+"les formalités d’importation et acquitte les droits et taxes dus en raison "
+"de l’importation."
+msgstr ""
+"จากข้อมูลเบื้องต้น เทอม DAT "
+"สามารถใช้กับการขนส่งแบบใดก็ได้รวมทั้งใช้ได้กับการขนส่งที่ต้องใช้ทั้งสอง โหมด "
+"สำหรับการส่งมอบสินค้านั้น ถือว่าผู้ขายได้ส่งมอบสินค้า เมื่อมีการขนถ่ายสินค้าลงจากยานพาหนะที่บรรทุก "
+"ไปไว้ยังที่ที่ผู้ซื้อจัดไว้ ณ อาคารขนถ่ายสินค้า ในท่าเรือหรือปลายทางตามที่ระบุไว้"
+
+#: .\template\pages\incoterms.html:164
+msgid "Ce terme remplace le terme DEQ."
+msgstr "เป็นเทอมใหม่ แทน DEQ (Delivered Ex Quay)"
+
+#: .\template\pages\incoterms.html:167
+msgid ""
+"Le vendeur prend en charge le transport des marchandises jusqu’au point de "
+"livraison convenu, donc il assume les coûts et les risques jusqu’à ce point. "
+"Les marchandises sont mises à disposition de l’acheteur à destination sur le "
+"moyen de transport, sans être déchargées. L’acheteur organise le "
+"déchargement, effectue les formalités d’importation et acquitte les droits "
+"et taxes dus en raison de l’importation."
+msgstr ""
+"ซึ่งทางหอการค้านานาชาติเห็นว่า "
+"เทอมเดิมทั้งสี่เทอมดังกล่าวค่อนข้างคล้ายกันมากแตกต่างกันเพียงเล็กน้อย "
+"จึงยุบรวมกันเพื่อให้เกิดความสะดวกยิ่งขึ้น และตามข้อมูลเบื้องต้น ผู้ขายตามเทอม DAP "
+"จะต้องรับผิดชอบในค่าใช้จ่ายต่าง ยกเว้นค่าภาษีและพิธีการนำเข้า และต้องรับความเสี่ยงภัย "
+"จนสินค้าถึงจุดหมายปลายทาง"
+
+#: .\template\pages\incoterms.html:168
+msgid "Ce terme remplace les termes DAF, DES et DDU."
+msgstr ""
+"เป็นเทอมใหม่แทน DAF (Delivered At Frontier), DES (Delivery Ex Ship), DEQ "
+"(Delivered Ex Quay) และ DDU (Delivered Duty Unpaid) "
+
+#: .\template\pages\incoterms.html:172
+msgid ""
+"Les marchandises sont livrées au lieu de destination, prêtes à être "
+"déchargées, alors que le vendeur a effectué le dédouanement à l’export et à "
+"l’import et acquitté les droits et taxes liés à ces opérations. En principe, "
+"l’acheteur endosse les frais de déchargement, sauf si le contrat stipule que "
+"ce déchargement est à la charge du vendeur. Parallèlement, l’acheteur n’a "
+"aucune obligation de prendre en charge les coûts d’inspection, tandis que le "
+"vendeur paie les frais des inspections avant expédition exigées par les "
+"autorités du pays d’exportation ou d’importation."
+msgstr ""
+"เงื่อนไข การส่งมอบนี้ ผู้ขายจะสิ้นสุดภาระการส่งมอบ สินค้าเมื่อ ผู้ขายได้จัดให้สินค้า พร้อมส่งมอบ ณ "
+"สถานที่ปลายทางของผู้ซื้อซึ่งผู้ขายเป็นผู้รับผิดชอบ การทําพิธีการส่งออก จ่ายค่าระวางขนส่งสินค้า "
+"ค่าประกันภัยขน ส่งสินค้า และเป็นผู้รับผิดชอบค่าใช้จ่ายอื่น ๆ "
+"รวมทั้งค่าใช้จ่ายในการนําของลงจากเรือและค่าขนส่งสินค้าไปยังสถานที่ที่ผู้ ซื้อระบุไว้ "
+"จนกระทั่งสินค้าพร้อม ส่งมอบ ณ สถานที่ปลายทาง ผู้ขายต้องเป็นผู้ดําเนินพิธีการนํ "
+"าเข้าสินค้าให้แก่ผู้ซื้อและเป็นผู้จ่ายค่า ภาษีนําเข้าแทน ผู้ซื้อด้วย"
+
+#: .\template\pages\index.html:5
+msgid ""
+"Sea Fly Services Transitaire Français basé en Thaïlande | Nos 20 ans "
+"d’expérience rendent vos expeditions plus sures et plus sécurisées."
+msgstr "เราคือผู้ให้บริการขนส่งระหว่างประเทศทั้งนำเข้าและส่งออก"
+
+#: .\template\pages\index.html:67
+#, fuzzy
+#| msgid "Expédition Dom Tom"
+msgid "Expedition"
+msgstr "การขนส่งระหว่างดอมทอม"
+
+#: .\template\pages\index.html:115
+msgid ""
+"Envoyez votre marchandise par Conteneur (Conteneur complet/groupage). "
+"Groupage vers toutes les destinations."
+msgstr ""
+"บริการขนส่งสินค้าไปยังท่าเรือต่างประเทศทั่วโลก ทั้งนำเข้าและส่งออก "
+"สามารถส่งได้ทั้งแบบเต็มตู้และไม่เต็มตู้"
+
+#: .\template\pages\index.html:121
+msgid ""
+"Besoin d&apos;un service rapide, nous nous occupons de tout Aéroports "
+"commerciaux dans le monde pour un service rapide."
+msgstr ""
+"เราสามารถขนส่งสินค้าไปยังแอร์พอร์ตต่างๆ ทั่วโลกด้วยความรวดเร็ว "
+"โดยเรามีสายการบินให้เลือกใช้ได้ตามความต้องการ"
+
+#: .\template\pages\index.html:127
+msgid ""
+"3-5 jours de transport, service porte à porte par service courrier vers "
+"toutes destinations."
+msgstr ""
+"บริการจัดส่งของเราสามารถรับสินค้าที่จุดรับสินค้า และนำไปส่งถึงมือผู้รับด้วยความรวดเร็ว "
+"เหมาะสำหรับเอกสารและพัสดุขนาดเล็กจนถึงขนาดกลาง"
+
+#: .\template\pages\index.html:133
+msgid ""
+"Nous pouvons vous aider dans toutes vos démarches de l&apos;emballage à "
+"l&apos;envoi, documents jusqu&apos;à votre nouvelle destination."
+msgstr ""
+"หากคุณต้องการย้ายบ้านหรือของใช้ส่วนตัวจากต่างประเทศมาประเทศไทย "
+"หรือย้ายจากประเทศไทยไปต่างประเทศ "
+"เรามีทีมงานที่เชี่ยวชาญด้านการย้ายบ้านไปต่างประเทศโดยเฉพาะ"
+
+#: .\template\pages\index.html:141
+msgid ""
+"Nous vous conseillons sur les formalités douanières, et le processus d&apos;"
+"import/export."
+msgstr ""
+"บริการผ่านพิธีการทุกขั้นตอนสำหรับการนำเข้าและส่งออกสินค้า "
+"เพื่ออำนวยความสะดวกในการทำธุรกิจของคุณ"
+
+#: .\template\pages\index.html:147
+msgid ""
+"Grâce à notre réseau, nous organisons des transports frontaliers avec la "
+"Birmanie, Laos, Vietnam, Cambodge."
+msgstr ""
+"บริการขนส่งสินค้าผ่านชายแดนไปยังประเทศเพื่อนบ้าน "
+"โดยเรามีทีมงานคอยอำนวยความสะดวกในการขนส่งทุกขั้นตอน"
+
+#: .\template\pages\index.html:154
+msgid ""
+"Equipe francophone, un service d&apos;expéditon plus simple et efficace."
+msgstr ""
+"บริการนำเข้าและส่งออกไปยังประเทศฝรั่งเศส ด้วยทีมงานจากประเทศฝรั่งเศส และประสบการณ์กว่า "
+"20 ปีของเรา"
+
+#: .\template\pages\index.html:161 .\template\pages\index.html:190
+msgid ""
+"Nouvelle Calédonie (Nouméa), La Réunion, Martinique, Guadeloupe, nous "
+"déservons toutes ces destinations."
+msgstr "บริการนำเข้าและส่งออกไปยังประเทศต่างๆ ในกลุ่มประเทศดอมดอม"
+
+#: .\template\pages\index.html:168
+msgid ""
+"Un envoi de Chine, nous organisons chacun des aspects du transport à des "
+"prix compétitifs."
+msgstr ""
+"บริการนำเข้าและส่งออกไปยังประเทศจีน ด้วยพาร์ทเนอร์ในเมื่องใหญ่ที่ประเทศจีน "
+"มีประสบการณ์สูงและเชื่อถือได้"
+
+#: .\template\pages\index.html:183
+msgid ""
+"Découvrez les promotions actuelles pour les expéditions ou services pour "
+"profiter des meilleures offres."
+msgstr ""
+"ติดตามโปรโมชั่นและราคาขนส่งอัตราพิเศษไปยังเมืองต่างๆ ทั่วโลกทั้งทางเรือและทางเครื่องบินได้ที่นี่"
+
+#: .\template\pages\index.html:186
+msgid "Tout afficher"
+msgstr "ดูโปรโมชั่น"
+
+#: .\template\pages\index.html:189
+msgid "Expédition Dom Tom"
+msgstr "การขนส่งระหว่างดอมทอม"
+
+#: .\template\pages\index.html:193 .\template\pages\promos.html:80
+msgid "Plus d&apos;informations"
+msgstr "รายละเอียดเพิ่มเติม"
+
+#: .\template\pages\index.html:196
+msgid "Obtenez votre cotation"
+msgstr "สอบถามอัตราค่าขนส่ง"
+
+#: .\template\pages\index.html:197
+msgid ""
+"Utilisez notre formulaire pour nous fournir les détails de votre demande "
+"nous reviendrons vers vous le plus tôt possible pour vous accompagner."
+msgstr ""
+"คุณสามารถส่งรายละเอียดสินค้าหรือสิ่งของต่างๆ ที่ต้องการจะส่งออกหรือนำเข้า "
+"มาให้เราคำนวณค่าใช้จ่ายในการขนส่งได้ฟรี อีกทั้งเรายังยินดีให้คำแนะนำขั้นตอนและเอกสารต่างๆ "
+"ที่จำเป็นอีกด้วย"
+
+#: .\template\pages\promos.html:5 .\template\pages\promos.html:75
+msgid "Promotions actuelles"
+msgstr "โปรโมชั่นค่าขนส่งระหว่างประเทศ"
+
+#: .\template\pages\promos.html:102
+msgid "Groupage Maritime Bangkok - Pointe des Galets"
+msgstr "กลุ่มเดินเรือ Bangkok - Pointe des Galets"
+
+#: .\template\pages\promos.html:111
+msgid "Service courrier, petit colis en express (Bangkok vers France)"
+msgstr "บริการส่งพัสดุไปรษณีย์ด่วนขนาดเล็ก (กรุงเทพฯถึงฝรั่งเศส)"
+
+#: .\template\pages\promos.html:120
+msgid "Conteneur 20’, Fret Bangkok vers Anvers"
+msgstr "ตู้คอนเทนเนอร์ 20 'ขนส่งกรุงเทพไปยังเมือง Antwerp"
+
+#: .\template\pages\promos.html:129
+msgid "Groupage depuis Bangkok Port vers Port Marseille ou Port Le Havre"
+msgstr "Groupage จากท่าเรือกรุงเทพไปยัง Port Marseille หรือ Port Le Havre"
+
+#: .\template\pages\promos.html:138
+msgid "Transport routier depuis Bangkok vers Phnom Penh"
+msgstr "การขนส่งทางถนนจากกรุงเทพฯไปยังพนมเปญ"
+
+#: .\template\pages\search.html:5
+msgid "Resultat de recherche"
+msgstr "ผลการค้นหา"
+
+#: .\template\pages\search.html:102
+msgid "Resultats pour"
+msgstr "ผลลัพธ์สำหรับ"
+
+#: .\template\pages\search.html:117
+msgid "Désolé aucun élément trouvé !"
+msgstr "ขออภัยไม่พบรายการ!"
+
+#~ msgid "Déconnecté"
+#~ msgstr "ตัดการเชื่อมต่อ"

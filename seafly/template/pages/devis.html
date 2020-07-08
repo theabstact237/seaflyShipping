@@ -1,0 +1,296 @@
+{% extends 'pages/base.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block title %} {% trans "Devis d'envoi" %} | {% trans "Sea Fly Services Transitaire Français basé en Thaïlande" %} {% endblock %}
+{% block css %}
+
+<style>
+
+    .topImg{
+        width: 100%;
+        height: 16rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("{% static 'pages/img/seashipment.jpg' %}");
+    }
+    #devis{
+        visibility: hidden;
+    }
+
+    .devis--title{
+        font-size: 1.6em;
+        margin: 0.67em 0;
+        color: #ed120b;
+        font-weight: bold;
+    }
+    .form{
+        width: 95%;
+        box-shadow: 0 3px 10px -2px rgba(64, 61, 61, 0.6);
+        padding: 20px;
+        margin: auto;
+    }
+    .form .top--form{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 2rem;
+    }
+    .form--subtitle{
+        font-weight: bold;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    .grid-51{
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+        grid-gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+    }
+    .v-input--checkbox{
+        margin: 0;
+        padding: 0;
+    }
+    @media screen and (max-width: 822px){
+
+        .form .top--form{
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div id="devis">
+
+        <div class="topImg">
+
+        </div>
+        <v-app>
+            <div class="devis">
+                <div class="devis--title">
+                    {{ devis }}
+                </div>
+                <p>{% trans "Veuillez utiliser ce formulaire pour votre demande d'envoi." %}</p>
+                <div class="form">
+                    {% if success %}
+                    <v-alert type="success">
+                      {{success}}
+                    </v-alert>
+                    {% endif %}
+                    <form action="devis" method="post">{% csrf_token %}
+                        <div class="top--form">
+                            <div class="left">
+                                <div class="item">
+                                    <div class="form--subtitle">{% trans "Départ" %}</div>
+                                    <div class="depart--form">
+                                        <v-select
+                                                ref="country"
+                                                :items="countries"
+                                                label="{% trans 'Pays' %}"
+                                                placeholder="--- {% trans 'Sélectionner votre pays' %} ---"
+                                                name="enlevement_country"
+                                                {% if errors.enlevement_country %} error-messages="{{errors.enlevement_country.0}}" {% endif %}
+                                                {% if post.enlevement_country %} value="{{ post.enlevement_country }}" {% endif %}
+                                        ></v-select>
+                                        <v-text-field
+                                                label="{% trans 'Lieu d&apos;enlèvement' %}"
+                                                prepend-inner-icon="place"
+                                                outlined
+                                                name="lieu_enlevement"
+                                                {% if errors.lieu_enlevement %} error-messages="{{errors.lieu_enlevement.0}}" {% endif %}
+                                                {% if post.lieu_enlevement %} value="{{ post.lieu_enlevement }}" {% endif %}
+                                        ></v-text-field>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="form--subtitle">{% trans "Information" %}</div>
+                                    <v-text-field
+                                            label="{% trans 'Marchandise' %}"
+                                            prepend-inner-icon="info"
+                                            outlined
+                                            name="marchandise"
+                                            {% if errors.marchandise %} error-messages="{{errors.marchandise.0}}" {% endif %}
+                                            {% if post.marchandise %} value="{{ post.marchandise }}" {% endif %}
+                                    ></v-text-field>
+                                    <div class="grid-51">
+                                        <v-text-field
+                                                label="{% trans 'Poids' %}"
+                                                prepend-inner-icon="info"
+                                                outlined
+                                                name="poids"
+                                                {% if errors.poids %} error-messages="{{errors.poids.0}}" {% endif %}
+                                                {% if post.poids %} value="{{ post.poids }}" {% endif %}
+                                        ></v-text-field>
+                                        <v-select
+                                                :items="poids"
+                                                label="{% trans 'Unité' %}"
+                                                outlined
+                                                name="poids_unite"
+                                                {% if errors.poids_unite %} error-messages="{{errors.poids_unite.0}}" {% endif %}
+                                                {% if post.poids_unite %} value="{{ post.poids_unite }}" {% endif %}
+                                        ></v-select>
+                                    </div>
+                                    <div class="grid-51">
+                                        <v-text-field
+                                                label="{% trans 'Volume' %}"
+                                                prepend-inner-icon="info"
+                                                outlined
+                                                name="volume"
+                                                {% if errors.volume %} error-messages="{{errors.volume.0}}" {% endif %}
+                                                {% if post.volume %} value="{{ post.volume }}" {% endif %}
+                                        ></v-text-field>
+                                        <v-select
+                                                :items="volumes"
+                                                label="{% trans 'Unité' %}"
+                                                outlined
+                                                name="volume_unite"
+                                                {% if errors.volume_unite %} error-messages="{{errors.volume_unite.0}}" {% endif %}
+                                                {% if post.volume_unite %} value="{{ post.volume_unite }}" {% endif %}
+                                        ></v-select>
+                                    </div>
+                                    <v-select
+                                            :items="type_emballages"
+                                            label="{% trans 'Type de l&apos;emballage' %}"
+                                            placeholder="--- {% trans 'Sélectionner votre type d&apos;emballage' %} ---"
+                                            style="position: relative; top: -7px"
+                                            name="type_emballage"
+                                            {% if errors.type_emballage %} error-messages="{{errors.type_emballage.0}}" {% endif %}
+                                            {% if post.type_emballage %} value="{{ post.type_emballage }}" {% endif %}
+                                    ></v-select>
+                                    <v-textarea
+                                            outlined
+                                            name="dimension"
+                                            label="{% trans 'Dimension' %}"
+                                            placeholder="{% trans 'Veuillez nous informer les dimensions (si possible)' %}"
+                                            name="dimension"
+                                            {% if errors.dimension %} error-messages="{{errors.dimension.0}}" {% endif %}
+                                            {% if post.dimension %} value="{{ post.dimension }}" {% endif %}
+                                    ></v-textarea>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="item">
+                                    <div class="form--subtitle">{% trans 'Arrivée' %}</div>
+                                    <div class="item">
+                                        <v-select
+                                                ref="country"
+                                                :items="countries"
+                                                label="{% trans 'Pays' %}"
+                                                placeholder="--- {% trans 'Sélectionner votre pays' %} ---"
+                                                name="livraison_country"
+                                                {% if errors.livraison_country %} error-messages="{{errors.livraison_country.0}}" {% endif %}
+                                                {% if post.livraison_country %} value="{{ post.livraison_country }}" {% endif %}
+                                        ></v-select>
+                                        <v-text-field
+                                                label="{% trans 'Lieu de livraison' %}"
+                                                prepend-inner-icon="place"
+                                                outlined
+                                                name="livraison"
+                                                {% if errors.livraison %} error-messages="{{errors.livraison.0}}" {% endif %}
+                                                {% if post.livraison %} value="{{ post.livraison }}" {% endif %}
+                                        ></v-text-field>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="form--subtitle">{% trans 'Modes de transport' %}</div>
+                                    <div>
+                                        <input type="checkbox"
+                                                name="transport_mode"
+                                                v-for="(check, key) in checks"
+                                                :value="check.name"
+                                               :checked="check.value"
+                                               style="display: none"
+                                        />
+                                        <v-checkbox
+                                                v-for="(check, key) in checks"
+                                                :key="key"
+                                                :label="check.name"
+                                                v-model="check.value"
+                                        ></v-checkbox>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="form--subtitle">{% trans 'Date d&apos;expédition prévue' %}</div>
+                                    <input type="text" name="date_expedition" v-model="month_select" style="display: none">
+                                    <v-select
+                                            ref="months"
+                                            :items="months"
+                                            placeholder="--- {% trans 'Sélectionner' %} ---"
+                                            name="date_expedition"
+                                            {% if errors.date_expedition %} error-messages="{{errors.date_expedition.0}}" {% endif %}
+                                            {% if post.date_expedition %} value="{{ post.date_expedition }}" {% endif %}
+                                    ></v-select>
+
+                                    <v-textarea
+                                            outlined
+                                            name="info_supp"
+                                            placeholder="{% trans 'Information supplémentaire / conditions spéciales (facultatif)' %}"
+                                            {% if errors.info_supp %} error-messages="{{errors.info_supp.0}}" {% endif %}
+                                            {% if post.info_supp %} value="{{ post.info_supp }}" {% endif %}></v-textarea>
+                                </div>
+                                <p>{% trans "Merci de nous communiquer un maximum d'informations pour etablir votre devis." %}</p>
+                            </div>
+                        </div>
+                        <div class="bottom--form">
+                            <div class="form--subtitle">Contact</div>
+                            <v-text-field
+                                    label="{% trans 'Nom' %}"
+                                    prepend-inner-icon="person"
+                                    outlined
+                                    name="name"
+                                    {% if errors.name %} error-messages="{{errors.name.0}}" {% endif %}
+                                    {% if post.name %} value="{{ post.name }}" {% endif %}
+                            ></v-text-field>
+                            <v-text-field
+                                    label="{% trans 'Email' %}"
+                                    prepend-inner-icon="mail"
+                                    outlined
+                                    name="email"
+                                    {% if errors.email %} error-messages="{{errors.email.0}}" {% endif %}
+                                    {% if post.email %} value="{{ post.email }}" {% endif %}
+                            ></v-text-field>
+                            <v-text-field
+                                    label="{% trans 'Téléphone (facultatif)' %}"
+                                    prepend-inner-icon="phone"
+                                    name="phone"
+                                    outlined
+                                    {% if errors.phone %} error-messages="{{errors.phone.0}}" {% endif %}
+                                    {% if post.phone %} value="{{ post.phone }}" {% endif %}
+                            ></v-text-field>
+                        </div>
+                        <v-btn color="blue" class="mb-5" dark large type="submit">{% trans 'Envoyer' %}</v-btn>
+                    </form>
+                </div>
+            </div>
+        </v-app>
+    </div>
+{% endblock %}
+
+{% block js %}
+
+{% trans 'via air' as via_air%}
+{% trans 'via maritime' as via_mar %}
+{% trans 'via ferroviaire' as via_fer %}
+{% trans 'Veillez me conseiller la meuilleur solution' as via_auth %}
+<script>
+    let view = 'devis';
+    new Vue({
+        delimiters: ['[[', ']]'],
+        vuetify: vuetify,
+        el: '#' + view,
+        mounted () {
+            document.getElementById('devis').style.visibility = 'visible';
+        },
+        data: () => ({
+            poids: ['KG', 'LB'],
+            volumes: ['M3', '20\'F', '40\'F'],
+            type_emballages: ['{% trans "Non empaqueté" %}', '{% trans "Caisse" %}', '{% trans "Cartons" %}', '{% trans "Palettisé" %}'],
+            months: {% trans "['Dès que possible', 'Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre']" %},
+            countries: ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Anguilla', 'Antigua &amp; Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia &amp; Herzegovina', 'Botswana', 'Brazil', 'British Virgin Islands', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Cape Verde', 'Cayman Islands', 'Chad', 'Chile', 'China', 'Colombia', 'Congo', 'Cook Islands', 'Costa Rica', 'Cote D Ivoire', 'Croatia', 'Cruise Ship', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Estonia', 'Ethiopia', 'Falkland Islands', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Polynesia', 'French West Indies', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Greece', 'Greenland', 'Grenada', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea Bissau', 'Guyana', 'Haiti', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jersey', 'Jordan', 'Kazakhstan', 'Kenya', 'Kuwait', 'Kyrgyz Republic', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macau', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Mauritania', 'Mauritius', 'Mexico', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Montserrat', 'Morocco', 'Mozambique', 'Namibia', 'Nepal', 'Netherlands', 'Netherlands Antilles', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Norway', 'Oman', 'Pakistan', 'Palestine', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Reunion', 'Romania', 'Russia', 'Rwanda', 'Saint Pierre &amp; Miquelon', 'Samoa', 'San Marino', 'Satellite', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa', 'South Korea', 'Spain', 'Sri Lanka', 'St Kitts &amp; Nevis', 'St Lucia', 'St Vincent', 'St. Lucia', 'Sudan', 'Suriname', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', "Timor L'Este", 'Togo', 'Tonga', 'Trinidad &amp; Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks &amp; Caicos', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Venezuela', 'Vietnam', 'Virgin Islands (US)', 'Yemen', 'Zambia', 'Zimbabwe'],
+            checks: [{name: "{{via_air}}", value: {% if via_air in mode %}true{% else %}false{% endif %}}, {name: "{{via_mar}}", value:  {% if via_mar in mode %}true{% else %}false{% endif %}}, {name:"{{via_fer}}" , value: {% if via_fer in mode %}true{% else %}false{% endif %}}, {name: '{{via_auth}}', value: {% if via_auth in mode %}true{% else %}false{% endif %}}],
+        })
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,2 @@
+python manage.py makemessages --all
+regénère le fichier de langue sans modifier ceux existant

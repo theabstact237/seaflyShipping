@@ -1,0 +1,149 @@
+{% extends 'pages/base.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block title %} {% trans 'Promotions actuelles' %} | {% trans "Sea Fly Services Transitaire Français basé en Thaïlande" %} {% endblock %}
+{% block css %}
+
+<style>
+
+    .topImg{
+        width: 100%;
+        height: 16rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("{% static 'pages/img/hamburg-3021820_640.jpg' %}");
+    }
+    .promos--title{
+        font-size: 1.6em;
+        margin: 0.67em 0;
+        color: #ed120b;
+        font-weight: bold;
+    }
+    .promos--content{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: left;
+        box-sizing: border-box;
+        padding-top: 5px;
+    }
+    .promo-item{
+        width: 327px;
+        display: flex;
+        flex-direction: column;
+        height: 280px;
+        box-shadow: 0 0 4px 1px #00000029;
+        border-radius: 0.2rem;
+        margin: 6px;
+    }
+    .promo--img--link{
+        width: 100%;
+        height: 250px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .promo--title{
+        color: #ed120b;
+        font-weight: bold;
+        font-size: 0.9rem;
+        margin: 5px 5px 5px 6px;
+        text-align: center;
+    }
+    .promo--more{
+        margin: 5px 0 5px 6px;
+        font-size: 0.8rem;
+        text-decoration: none;
+    }
+    #promos{
+        visibility: hidden;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div id="promos">
+
+        <div class="topImg">
+
+        </div>
+        <v-app>
+            <div class="mb-4">
+                <div class="promos--title">{% trans 'Promotions actuelles' %}</div>
+                <div class="promos--content">
+                    <div class="promo-item" v-for="(item,key) in promos" :key="key">
+                        <a :href="item.img.to" class="promo--img--link" :style="{'background-image' : 'url( {% static 'pages/img/promos/' %}' + item.img.directory + ')'}"></a>
+                        <a :href="item.img.to" class="promo--title">[[ item.title.text ]]</a>
+                        <a :href="item.img.to" class="promo--more" style="color: var(--primary)"><v-icon color="primary">arrow_right</v-icon> {% trans 'Plus d&apos;informations' %}</a>
+                    </div>
+                </div>
+            </div>
+        </v-app>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    let view = 'promos';
+    new Vue({
+        delimiters: ['[[', ']]'],
+        vuetify: vuetify,
+        el: '#' + view,
+        mounted () {
+            document.getElementById('promos').style.visibility = 'visible';
+        },
+        data:() => ({
+            promos: [
+                {
+                    title: {
+                        text: "{% trans 'Groupage Maritime Bangkok - Pointe des Galets' %}"
+                    },
+                    img: {
+                        to: 'promos/groupage-maritime-bangkok-pointe-des-galets',
+                        directory: 'La-Reunion.png'
+                    }
+                },
+                {
+                    title: {
+                        text: "{% trans 'Service courrier, petit colis en express (Bangkok vers France)' %}"
+                    },
+                    img: {
+                        to: 'promos/service-courrier-petit-colis-en-express-bangkok-vers-france',
+                        directory: 'Promo-Petit-Colis-700ko.png'
+                    }
+                },
+                {
+                    title: {
+                        text: "{% trans 'Conteneur 20’, Fret Bangkok vers Anvers' %}"
+                    },
+                    img: {
+                        to: 'promos/conteneur-20-fret-bangkok-vers-anvers',
+                        directory: 'Promo-Test-3.jpg'
+                    }
+                },
+                {
+                    title: {
+                        text: "{% trans 'Groupage depuis Bangkok Port vers Port Marseille ou Port Le Havre' %}"
+                    },
+                    img: {
+                        to: 'promos/groupage-depuis-bangkok-port-vers-port-marseille-ou-port-le-havre',
+                        directory: 'Test-Promo-1.jpg'
+                    }
+                },
+                {
+                    title: {
+                        text: "{% trans 'Transport routier depuis Bangkok vers Phnom Penh' %}"
+                    },
+                    img: {
+                        to: 'promos/transport-routier-depuis-bangkok-vers-phnom',
+                        directory: 'Test-Promo-2.jpg'
+                    }
+                },
+            ]
+        })
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,278 @@
+{% extends 'pages/base.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block title %} {% trans 'Conversions Volumétriques' %} | {% trans "Sea Fly Services Transitaire Français basé en Thaïlande" %}  {% endblock %}
+{% block css %}
+<style>
+    :root{
+        --text: #565656;
+    }
+    #faq{
+        visibility: hidden;
+    }
+    .topImg{
+        visibility: hidden;
+        width: 100%;
+        height: 16rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("{% static 'pages/img/seashipment.jpg' %}");
+    }
+
+    .contact{
+        width: 100%;
+        display: flex;
+        color: #d91a31!important;
+        font-size: 1.7rem;
+        margin-top: 18px;
+    }
+    .content{
+        display: grid;
+        grid-template-columns: 5fr 2fr;
+        margin-top: 15px;
+    }
+    @media screen and (max-width: 864px) {
+        .content{
+            grid-template-columns: 1fr;
+        }
+        .buttons .button--contact{
+            display: flex;
+            flex-direction: row;
+        }
+        .buttons .button--contact button{
+            margin: 10px 0 10px;
+        }
+        .desc{
+            text-align: center;
+        }
+    }
+    .left{
+        margin-right: 15px;
+    }
+    .title{
+        font-size: 1.6em;
+        margin: 0.67em 0;
+        color: #ed120b;
+        font-weight: bold;
+    }
+    .number{
+        font-size: 1.8rem;
+    }
+    .desc{
+        color: var(--text);
+        font-size: 0.8rem;
+        margin: 5px;
+    }
+    .buttons .button--contact{
+        display: flex;
+        flex-direction: column;
+    }
+    .buttons .button--contact button{
+        margin: 10px 0 10px;
+    }
+
+    .conversion--kg-cm .conversion--header,.conversion--kg-cm .conversion--content{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        box-sizing: border-box;
+        grid-gap: 1rem;
+    }
+    .conversion--kg-cm .conversion--content .item{
+        display: flex;
+        flex-direction: row;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="topImg">
+
+    </div>
+    <div id="faq">
+        <v-app>
+            <div class="content">
+                <div class="left">
+                    <div class="title">
+                        [[ title ]]
+                    </div>
+                    <v-app>
+                        <div class="convertion">
+                            <p>{% trans 'Le terme "poids volumétrique", parfois appelé "dim" ou encore poids dimensionnel, est employé par rapport à l&apos;espace que prend un colis dans l&apos;avion. Il peut coûter plus cher que le poids réel ( ou brut ) du paquet. Vous devrez calculer le poids dimensionnel sur chaque expédition, et comparer cela à son poids brut. Enfin le poids le plus conséquent des deux déterminera le poids taxable ou chargeable, donc votre coût d&apos;expédition' %}
+                            </p>
+                            <p class="mt-12">
+                                {% trans 'Utilisez ces tableaux si vous devez convertir des livres en kilogramme ou encore pieds et pouces en cm.' %}
+                            </p>
+                            <div class="conversion--kg-cm">
+                                <div class="conversion--header grey lighten-3">
+                                    <h2 class="ma-2">{% trans 'Conversion en kilogramme' %}</h2>
+                                    <h2 class="ma-2">{% trans 'Conversion en cm' %}</h2>
+                                </div>
+                                <div class="conversion--content mt-4">
+                                    <div class="item">
+                                        <v-text-field
+                                                label="Ibs"
+                                                outlined
+                                                class="mr-2"
+                                                v-model="ibs"
+                                        ></v-text-field>
+                                        <div class="egal" style="font-size: 2rem">=</div>
+                                        <v-text-field
+                                                label="Kg"
+                                                outlined
+                                                class="ml-2"
+                                                v-model="kg"
+                                                disabled
+                                        ></v-text-field>
+                                    </div>
+                                    <div class="item">
+                                        <v-text-field
+                                                label="ft"
+                                                outlined
+                                                class="mr-2"
+                                                v-model="ft"
+                                        ></v-text-field>
+                                        <v-text-field
+                                                label="in"
+                                                outlined
+                                                class="mr-2"
+                                                v-model="ins"
+                                        ></v-text-field>
+                                        <div class="egal" style="font-size: 2rem">=</div>
+                                        <v-text-field
+                                                label="{% trans 'Centimètre' %}"
+                                                outlined
+                                                class="ml-2"
+                                                v-model="cm"
+                                                disabled
+                                        ></v-text-field>
+                                    </div>
+                                </div>
+                                <p>{% trans "Pour les expéditions légères le poids volumétrique sera utilisé si celui-ci excède le poids réel (en kilogrammes). Pour calculer le poids volumétrique, il faut entrer la largeur, la longueur et la hauteur de votre colis (en centimètres) dans les champs ci-dessous et appuyer sur le bouton calcul." %} </p>
+                            </div>
+                            <div class="conversion--kg-cm">
+                                <div class="conversion--header grey lighten-3">
+                                    <h2 class="ma-2">{% trans 'Conversion du Poids volumétrique' %}</h2>
+                                </div>
+                                <div class="conversion--content mt-4">
+                                    <div class="item">
+                                        <v-text-field
+                                                label="{% trans 'Longueur (cm)' %}"
+                                                outlined
+                                                class="mr-2"
+                                                v-model="long"
+                                        ></v-text-field>
+                                        <v-text-field
+                                                label="{% trans 'Largeur (cm)' %}"
+                                                outlined
+                                                class="mr-2"
+                                                v-model="lar"
+                                        ></v-text-field>
+                                        <v-text-field
+                                                label="{% trans 'Hauteur (cm)' %}"
+                                                outlined
+                                                class="mr-2"
+                                                v-model="haut"
+                                        ></v-text-field>
+                                        <div class="egal" style="font-size: 2rem">=</div>
+                                        <v-text-field
+                                                label="{% trans 'Volume (cm3)' %}"
+                                                outlined
+                                                class="ml-2"
+                                                v-model="vol"
+                                                disabled
+                                        ></v-text-field>
+                                    </div>
+                                    <div class="item">
+                                        <v-text-field
+                                                label="{% trans 'Poids volumetrique (Kg)' %}"
+                                                outlined
+                                                class="mr-2"
+                                                v-model="pds"
+                                                disabled
+                                        ></v-text-field>
+                                    </div>
+                                </div>
+                                <h2 class="mt-4">{% trans 'CALCUL DU POIDS DE VOLUME SUR LE FRET AÉRIEN :' %}</h2>
+
+                                <h3 class="mt-4 mb-3">{% trans '- Exemple :' %}</h3>
+                                <p>
+                                    {% trans '40 x 48 x 60 cm, poids brut = 5 kilogrammes Le poids volume est : 40 x 48 x 60 = 115.200 volumes (cm³) Le volume kilogramme est de 115.200 / 6.000 = 19.2 Votre poids de volume est plus élevé que le poids réel (19.2 kilogrammes contre 5 kilogrammes), donc, votre poids imputable sera de 19.5 kilogrammes. Le poids de chargement de la compagnie aérienne est calculé en fonction des deux poids réel et volume, c&apos;est-à-dire  : 6m³ = 1000 kg (poids de volume).' %}
+                                </p>
+                            </div>
+                        </div>
+                    </v-app>
+                </div>
+                <div class="right">
+                    <div class="contact">
+                        <div style="width: auto; margin: auto">
+                            <div class="number ml-3"><a href="tel:026903523" style="text-decoration: none"><v-icon color="black" style="font-size: 1.8rem;">phone</v-icon>02-690-3523</a></div>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <p>{% trans 'Notre experience de 20 ans a votre disposition pour votre envoi.' %}</p>
+                    </div>
+                    <div class="buttons">
+                        <button-red-green></button-red-green>
+                    </div>
+                </div>
+            </div>
+        </v-app>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    let view = 'faq';
+    new Vue({
+        delimiters: ['[[', ']]'],
+        vuetify: vuetify,
+        el: '#' + view,
+        mounted () {
+            document.getElementById(view).style.visibility = 'visible';
+            document.getElementsByClassName("topImg")[0].style.visibility = 'visible';
+        },
+        data: () => ({
+            title: footer[2].name,
+            ibs : 0,
+
+            ft:0,
+            ins:0,
+
+            long: 0,
+            lar: 0,
+            haut: 0
+        }),
+        computed: {
+            kg(){
+                return Math.round((this.ibs * 0.4535924) * 10)/10
+                // return (this.ibs * 0.4535924).toFixed(1)
+            },
+            cm(){
+                let ft = isNaN(eval(this.ft)) ? 0 : eval(this.ft);
+                let ins = isNaN(eval(this.ins)) ? 0 : eval(this.ins);
+
+                return Math.round((ft* 12 + ins) * 25.4)/10;
+            },
+            vol(){
+                let long = isNaN(eval(this.long)) ? 0 : parseFloat(this.long);
+                let lar = isNaN(eval(this.lar)) ? 0 : parseFloat(this.lar);
+                let haut = isNaN(eval(this.haut)) ? 0 : parseFloat(this.haut);
+
+                let h = long * lar * haut * 10;
+
+                return Math.round(h)/10;
+            },
+            pds(){
+                let long = isNaN(eval(this.long)) ? 0 : eval(this.long);
+                let lar = isNaN(eval(this.lar)) ? 0 : eval(this.lar);
+                let haut = isNaN(eval(this.haut)) ? 0 : eval(this.haut);
+
+                return Math.round(long * lar * haut * 10 / 6000.4)/10;
+            }
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,178 @@
+{% extends 'pages/base.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block title %} {% trans 'Incoterms' %} | {% trans "Sea Fly Services Transitaire Français basé en Thaïlande" %} {% endblock %}
+{% block css %}
+<style>
+    :root{
+        --text: #565656;
+    }
+    #faq{
+        visibility: hidden;
+    }
+    .topImg{
+        visibility: hidden;
+        width: 100%;
+        height: 16rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("{% static 'pages/img/hamburg-3021820_640.jpg' %}");
+    }
+
+    .contact{
+        width: 100%;
+        display: flex;
+        color: #d91a31!important;
+        font-size: 1.7rem;
+        margin-top: 18px;
+    }
+    .content{
+        display: grid;
+        grid-template-columns: 5fr 2fr;
+        margin-top: 15px;
+    }
+    @media screen and (max-width: 864px) {
+        .content{
+            grid-template-columns: 1fr;
+        }
+        .buttons .button--contact{
+            display: flex;
+            flex-direction: row;
+        }
+        .buttons .button--contact button{
+            margin: 10px 0 10px;
+        }
+        .desc{
+            text-align: center;
+        }
+    }
+    .left{
+        margin-right: 15px;
+    }
+    .title{
+        font-size: 1.6em;
+        margin: 0.67em 0;
+        color: #ed120b;
+        font-weight: bold;
+    }
+    .number{
+        font-size: 1.8rem;
+    }
+    .desc{
+        color: var(--text);
+        font-size: 0.8rem;
+        margin: 5px;
+    }
+    .buttons .button--contact button{
+        margin: 10px 0 10px;
+    }
+    #incoters{
+        margin-top: 75px;
+        border-spacing:0 20px;
+    }
+    #incoters tr td:nth-child(2){
+        width: 80%;
+        padding: 5px;
+    }
+    #incoters tr .ico--title{
+        color: black;
+        font-weight: bold;
+    }
+    #incoters tr{
+        margin-bottom: 15px;
+    }
+    .blue{
+        color: blue;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="topImg">
+
+    </div>
+    <div id="faq">
+        <v-app>
+            <div class="content">
+                <div class="left">
+                    <div class="title">
+                        {% trans 'Incoterms' %}
+                    </div>
+                    <v-app>
+                        <div class="icoterms">
+                            <p>{% trans "Les Incoterms sont des règles internationales qui sont acceptées par les gouvernements, les autorités judiciaires et professionels du monde entier pour l’interprétation des termes les plus couramment utilisés dans le commerce international. Ils réduisent ou suppriment complètement les incertitudes découlant des différentes interprétations de ces termes dans les différents pays." %}</p>
+                            <img src="{% static 'pages/img/incoterms2.jpg' %}" alt="" width="100%">
+                            <table id="incoters">
+                                <tbody>
+                                    <tr v-for="(item, key) in datas" :key="key">
+                                        <td><div class="ico--title">[[ item.title[0] ]]</div>[[ item.title[1] ]]</td>
+                                        <td>
+                                            <div class="blue--text" v-if="item.blue != null">[[ item.blue ]]</div>
+                                            [[ item.content ]]
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </v-app>
+                </div>
+                <div class="right">
+                    <div class="contact">
+                        <div style="width: auto; margin: auto">
+                            <div class="number ml-3"><a href="tel:026903523" style="text-decoration: none"><v-icon color="black" style="font-size: 1.8rem;">phone</v-icon>02-690-3523</a></div>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <p>{% trans 'Notre experience de 20 ans a votre disposition pour votre envoi.' %}</p>
+                    </div>
+                    <div class="buttons">
+                        <button-red-green></button-red-green>
+                    </div>
+                </div>
+            </div>
+        </v-app>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    let view = 'faq';
+    new Vue({
+        delimiters: ['[[', ']]'],
+        vuetify: vuetify,
+        el: '#' + view,
+        mounted () {
+            document.getElementById(view).style.visibility = 'visible';
+            document.getElementsByClassName("topImg")[0].style.visibility = 'visible';
+        },
+        data: () => ({
+            datas: [
+                {
+                    title : ["EXW","(Ex Works )"],
+                    content: "{% trans 'La marchandise est disponible dans les locaux du vendeur à une date fixée. L’acheteur organise et paie le transport. Il en supporte aussi les risques jusqu’à la destination finale des marchandises. Les formalités et frais d’exportation et d’importation, ainsi que les droits et taxes liés à ces deux opérations sont également à la charge de l’acheteur.' %}"
+                },
+                {title : ["FCA","(Free Carrier)"], content: "{% trans 'Le vendeur remet les marchandises au transporteur désigné et payé par l’acheteur. Le transfert de risques est matérialisé lors de cette opération. Les formalités et frais d’exportation, ainsi que les droits et taxes liés, sont à la charge du vendeur. L’acheteur endosse le transport jusqu’à ces lieux d’activité, effectue les formalités à l’import et acquitte les droits et taxes liés.' %}"},
+                {title : ["FAS","(Free Alongside Ship)"], content: "{% trans 'Le vendeur règle les frais de transport jusqu’au port d’embarquement et effectue les formalités d’exportation, acquitte les frais, droits et taxes liés à ces formalités. La marchandise est livrée le long du navire dans le port d’embarquement: cette livraison marque le transfert de risques et de frais. L’acheteur supporte les coûts de chargement, le transport maritime, les coûts de déchargement et de transport du port de destination jusqu’à ses lieux d’activité.' %}"},
+                {title : ["FOB","(Free On Board)"], content: "{% trans 'La marchandise est livrée sur le navire désigné par l’acheteur. Aux termes des règles 2010, la notion de passage de bastingage qui matérialisait jusqu’alors le transfert de risque a disparu. Désormais, le transfert de risque et de frais s’opère quand la marchandise a été livrée sur le navire. Le vendeur règle les frais de transport jusqu’au port d’embarquement, ainsi que les frais de chargement et effectue les formalités d’exportation, acquitte les frais, droits et taxes liés à ces formalités.' %}"},
+                {title : ["CPT","(Carriage Paid To)"], content: " {% trans 'Le vendeur assume les frais du transport maritime jusqu’au port de destination. Le transfert de risque est établi lorsque les marchandises sont mises à la disposition du premier transporteur. Ainsi, les frais d’assurance sont à la charger de l’acheteur.' %}"},
+                {title : ["CIP","(Carriage & insurance Paid to)"], content: "{% trans 'Les conditions sont les mêmes que pour CPT. Le vendeur doit fournir une assurance couvrant pour l’acheteur, le risque de perte ou de dommage que la marchandise peut courir pendant le transport.' %}\n"},
+                {title : ["CFR","(Cost and Freight)"], content: "{% trans 'Le transfert de risque s’opère lorsque les marchandises sont livrées à bord du bateau dans le port d’embarquement. Le vendeur assume de plus les frais de transport jusqu’au port de destination et les frais de chargement, il effectue les formalités d’export et paie les droits et taxes liés. L’acheteur endosse les frais à partir de l’arrivée des marchandises au port de destination, effectue les formalités à l’import et acquitte les droits et taxes liés.' %}"},
+                {title : ["CIF","(Cost, Insurance & Freight)"], content: "{% trans 'Le transfert de risque s’opère lorsque les marchandises sont livrées à bord du bateau dans le port d’embarquement. Le vendeur assume de plus les frais de transport et d’assurance jusqu’au port de destination et les frais de chargement, il effectue les formalités d’export et paie les droits et taxes liés. L’acheteur endosse les frais à partir de l’arrivée des marchandises au port de destination, effectue les formalités à l’import et acquitte les droits et taxes liés.' %}"},
+                {title : ["DAT","(Delivered At Terminal)"], content: "{% trans 'Outre le transport principal, le vendeur organise et paie le déchargement de la marchandise au point de destination et son acheminement jusqu’au terminal convenu. Le transfert de risque est effectif lorsque la marchandise a été mise à la disposition de l’acheteur au terminal convenu. L’acheteur effectue les formalités d’importation et acquitte les droits et taxes dus en raison de l’importation.' %}", blue: "{% trans 'Ce terme remplace le terme DEQ.' %}"},
+                {
+                    title : ["DAP","(Delivered At Place)"],
+                    content: "{% trans 'Le vendeur prend en charge le transport des marchandises jusqu’au point de livraison convenu, donc il assume les coûts et les risques jusqu’à ce point. Les marchandises sont mises à disposition de l’acheteur à destination sur le moyen de transport, sans être déchargées. L’acheteur organise le déchargement, effectue les formalités d’importation et acquitte les droits et taxes dus en raison de l’importation.' %}",
+                    blue: "{% trans 'Ce terme remplace les termes DAF, DES et DDU.' %}"
+                },
+                {
+                    title : ["DDP","(Delivered Duty Paid)"],
+                    content: " {% trans 'Les marchandises sont livrées au lieu de destination, prêtes à être déchargées, alors que le vendeur a effectué le dédouanement à l’export et à l’import et acquitté les droits et taxes liés à ces opérations. En principe, l’acheteur endosse les frais de déchargement, sauf si le contrat stipule que ce déchargement est à la charge du vendeur. Parallèlement, l’acheteur n’a aucune obligation de prendre en charge les coûts d’inspection, tandis que le vendeur paie les frais des inspections avant expédition exigées par les autorités du pays d’exportation ou d’importation.' %}"
+                },
+            ]
+        })
+    });
+</script>
+{% endblock %}
